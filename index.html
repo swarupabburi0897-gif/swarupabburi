@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jyothi Swarup Abburi - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header */
+        .header {
+            border-bottom: 3px solid #667eea;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            text-transform: uppercase;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Summary */
+        .summary-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            color: #764ba2;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .skill-category-content {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Experience */
+        .job {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .job-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+
+        .job-company {
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .job-dates {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .job-description {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .job-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .job-description li {
+            margin-bottom: 6px;
+        }
+
+        /* Projects */
+        .project {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .project-tech {
+            font-size: 12px;
+            color: #764ba2;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .project-description {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .university {
+            font-size: 13px;
+            color: #667eea;
+            margin-bottom: 3px;
+        }
+
+        .graduation-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Achievements */
+        .achievement-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievement-list li {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .achievement-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="name">Jyothi Swarup Abburi</div>
+            <div class="contact-info">
+                <span>📍 Mansfield, CT 06250</span>
+                <span>📞 636-368-5657</span>
+                <span>✉️ <a href="mailto:swarupabburi0897@gmail.com">swarupabburi0897@gmail.com</a></span>
+                <span>🌐 <a href="https://swarupchowdary.netlify.app" target="_blank">Portfolio</a></span>
+                <span>💼 <a href="https://linkedin.com/in/swarup-abburi-b1a3a339a" target="_blank">LinkedIn</a></span>
+                <span>💻 <a href="https://github.com/swaroopsankar" target="_blank">GitHub</a></span>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <section>
+            <div class="section-title">Professional Summary</div>
+            <div class="summary-text">
+                Data Analyst and Implementation Specialist with an MS in Data Analytics (New Mexico State University, 2025) and B.Tech in Electronics &amp; Communication Engineering (Bharath University, 2022). 3+ years of hands-on experience with SQL, data analysis, and customer data onboarding, working closely with cross-functional teams in fast-paced environments. Proficient in Snowflake, PostgreSQL, Python (pandas), and Excel for building datasets, troubleshooting data issues, and delivering insights that improve throughput and customer outcomes. Eager to contribute as a hybrid Data Analyst/Scientist, supporting teams with analytics, experimentation, and AI-driven enhancements.
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section>
+            <div class="section-title">Technical Skills</div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Analytics &amp; Data</div>
+                    <div class="skill-category-content">SQL, Snowflake, PostgreSQL, ETL/ELT, Data Analysis, Data Reconciliation, Excel, Google Sheets</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Data Science &amp; Python</div>
+                    <div class="skill-category-content">Python, pandas, basic statistics, exploratory data analysis, data preprocessing</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Tools &amp; Platforms</div>
+                    <div class="skill-category-content">Tableau, Stripe, Shopify, APIs, Jira, Git, web data collection and integrations</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Operations &amp; Agile</div>
+                    <div class="skill-category-content">Customer Onboarding, Implementations, Technical Customer Success, Stakeholder Collaboration, Agile Sprint Planning</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section>
+            <div class="section-title">Professional Experience</div>
+
+            <div class="job">
+                <div class="job-title">Freelance Data Analyst &amp; Implementation Specialist</div>
+                <div class="job-company">Remote</div>
+                <div class="job-dates">2024 – Present</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Managed 5+ customer analytics and data onboarding implementations end-to-end, from requirements gathering to delivery</li>
+                        <li>Collaborated with Sales and Product stakeholders to understand data needs, troubleshoot issues, and ensure successful go-lives</li>
+                        <li>Led cross-functional data reconciliation projects that improved customer success metrics by 40%</li>
+                        <li>Diagnosed and resolved complex data onboarding issues independently in fast-paced environments</li>
+                        <li>Built and maintained documentation and implementation processes that reduced onboarding time by 40%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-title">Web Development Intern</div>
+                <div class="job-company">Chennai, India</div>
+                <div class="job-dates">Jun 2022 – Aug 2022</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Led technical implementations in a 3-person cross-functional team, focusing on customer-facing components</li>
+                        <li>Managed onboarding, troubleshooting, and deployment of web features for clients</li>
+                        <li>Worked closely with Engineering and Product teams on requirements, issue resolution, and release readiness</li>
+                        <li>Participated in Agile ceremonies including sprint planning, daily standups, and retrospectives</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Projects -->
+        <section>
+            <div class="section-title">Key Projects</div>
+
+            <div class="project">
+                <div class="project-title">Snowflake Healthcare Onboarding Implementation</div>
+                <div class="project-tech">Tech: Snowflake, SQL, Tableau, stakeholder collaboration</div>
+                <div class="project-description">
+                    Led end-to-end data onboarding for a dataset of 1M+ records in a Snowflake environment. Collaborated with Sales and Engineering teams to troubleshoot and reconcile customer healthcare data. Built and refined implementation processes that improved throughput by 35%. Created documentation and training materials for customer success teams.
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">Customer Data Onboarding Platform</div>
+                <div class="project-tech">Tech: SQL, Python, Excel, cross-functional collaboration</div>
+                <div class="project-description">
+                    Implemented customer data onboarding workflows across multiple platforms, focusing on data quality and accuracy. Troubleshot and resolved data integration issues in a fast-paced environment. Achieved a 40% improvement in onboarding throughput through better documentation and optimized workflows.
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">E-commerce Implementation Project</div>
+                <div class="project-tech">Tech: SQL, PostgreSQL, APIs, technical customer success</div>
+                <div class="project-description">
+                    Led e-commerce data implementation projects with cross-functional teams and multiple stakeholders. Managed data onboarding and troubleshooting to ensure smooth deployments and minimal downtime. Applied Agile practices to keep implementations on track.
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <div class="section-title">Education</div>
+
+            <div class="education-item">
+                <div class="degree">Master of Science, Data Analytics</div>
+                <div class="university">New Mexico State University</div>
+                <div class="graduation-date">May 2025 | GPA: 3.25</div>
+                <div class="education-details">Focus: Data Engineering, Operations Analysis, Stakeholder Collaboration, Cross-Functional Data Solutions, Agile Project Management</div>
+            </div>
+
+            <div class="education-item">
+                <div class="degree">Google Data Analytics Professional Certificate</div>
+                <div class="university">Coursera</div>
+                <div class="graduation-date">2024</div>
+                <div class="education-details">Focus: Customer Data Analysis, Troubleshooting, Onboarding Processes</div>
+            </div>
+
+            <div class="education-item">
+                <div class="degree">Bachelor of Technology, Electronics &amp; Communication Engineering</div>
+                <div class="university">Bharath University of Higher Education and Research, Chennai</div>
+                <div class="graduation-date">2022</div>
+                <div class="education-details">Focus: Systems Implementation, Technical Troubleshooting, Operations Fundamentals</div>
+            </div>
+        </section>
+
+        <!-- Achievements -->
+        <section>
+            <div class="section-title">Achievements &amp; Portfolio</div>
+            <ul class="achievement-list">
+                <li>Led 5+ end-to-end customer implementations with 40% efficiency gains in onboarding processes</li>
+                <li>Completed 200+ hours of technical troubleshooting and stakeholder collaboration in implementation projects</li>
+                <li>Live portfolio with 10+ implementation and onboarding projects: <a href="https://swarupchowdary.netlify.app" target="_blank" style="color: #667eea;">swarupchowdary.netlify.app</a></li>
+                <li>Active GitHub repositories showcasing SQL, Python, and data work: <a href="https://github.com/swaroopsankar" target="_blank" style="color: #667eea;">github.com/swaroopsankar</a></li>
+                <li>Proven autonomy, problem-solving ability, and operations mindset in fast-paced, cross-functional environments</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
