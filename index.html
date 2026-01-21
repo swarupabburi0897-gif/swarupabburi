@@ -22,11 +22,30 @@ body {
   text-align: center;
   color: #333;
   padding: 20px;
+  overflow-x: hidden;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #ff6b9d;
+  pointer-events: none;
+  animation: confetti-fall 3s ease-in forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 .container {
   max-width: 800px;
   width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .typewriter {
@@ -38,6 +57,18 @@ body {
   overflow: hidden;
   animation: typing 8s steps(200) forwards, blink 1s infinite;
   padding: 0 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 30px 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(255, 107, 157, 0.2);
+  transition: all 0.3s ease;
+}
+
+.typewriter:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(255, 107, 157, 0.3);
 }
 
 @keyframes typing {
@@ -58,8 +89,21 @@ body {
 .heart {
   font-size: 6em;
   margin: 30px 0;
-  animation: pulse 2s infinite;
+  animation: pulse 2s infinite, float 3s ease-in-out infinite, rotate 4s linear infinite;
   letter-spacing: 20px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.5));
+  transition: all 0.3s ease;
+}
+
+.heart:hover {
+  animation: pulse 0.5s infinite, float 3s ease-in-out infinite, rotate 2s linear infinite;
+  filter: drop-shadow(0 0 30px rgba(255, 107, 157, 1));
+  transform: scale(1.2);
+}
+
+.heart:active {
+  animation: heartBeat 0.6s ease-in-out;
 }
 
 @keyframes pulse {
@@ -71,12 +115,39 @@ body {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.4); }
+  50% { transform: scale(1.2); }
+  75% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
 .photos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
   margin: 40px 0;
+  perspective: 1000px;
 }
 
 .photos img {
@@ -85,23 +156,79 @@ body {
   object-fit: cover;
   border-radius: 25px;
   box-shadow: 0 20px 40px rgba(255, 107, 157, 0.5);
-  transition: transform 0.4s ease;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
 }
 
 .photos img:hover {
-  transform: scale(1.08);
+  transform: scale(1.12) rotateY(10deg) rotateX(-5deg);
+  box-shadow: 0 30px 60px rgba(255, 107, 157, 0.8);
+  filter: brightness(1.1);
+}
+
+.photos img:active {
+  animation: photoFlip 0.6s ease-in-out;
+}
+
+@keyframes photoFlip {
+  0% { transform: rotateY(0deg) scale(1); }
+  50% { transform: rotateY(90deg) scale(1.1); }
+  100% { transform: rotateY(0deg) scale(1.12); }
 }
 
 .music {
   margin: 40px 0;
   display: flex;
   justify-content: center;
+  opacity: 0;
+  animation: slideUp 0.8s ease 2s forwards;
+}
+
+.music iframe {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+}
+
+.music iframe:hover {
+  box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+  transform: scale(1.05);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-text {
+  position: fixed;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ff6b9d;
+  pointer-events: none;
+  animation: floatAway 3s ease-out forwards;
+  opacity: 0.8;
+}
+
+@keyframes floatAway {
+  to {
+    transform: translateY(-100px) translateX(50px);
+    opacity: 0;
+  }
 }
 
 @media (max-width: 768px) {
   .typewriter {
     font-size: 1.2em;
     line-height: 1.4;
+    padding: 20px 15px;
   }
 
   .heart {
@@ -112,6 +239,11 @@ body {
   .photos img {
     width: 220px;
     height: 220px;
+  }
+
+  .music iframe {
+    width: 100% !important;
+    max-width: 350px;
   }
 }
 
@@ -147,15 +279,87 @@ I once carried a quiet void where a sister should have been... until YOU filled 
 Can't wait to share endless stories when we meet. 
 You're truly one of a kind!</h1>
   
-  <div class="heart">🎀 💛</div>
+  <div class="heart" id="heart">🎀 💛</div>
   
   <div class="photos">
-    <img src="bh.jpeg" alt="Sister Memory" loading="lazy">
+    <img src="bh.jpeg" alt="Sister Memory" loading="lazy" id="photo">
   </div>
   
   <div class="music">
     <iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/3SZExbKuK8BqIyLASYxTDg?utm_source=generator" width="350" height="90" frameBorder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
   </div>
 </div>
+
+<script>
+// Confetti effect on heart click
+const heart = document.getElementById('heart');
+const photo = document.getElementById('photo');
+
+function createConfetti() {
+  for (let i = 0; i < 30; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * window.innerWidth + 'px';
+    confetti.style.top = '0px';
+    confetti.style.backgroundColor = ['#ff6b9d', '#fecfef', '#ff9a9e'][Math.floor(Math.random() * 3)];
+    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+    document.body.appendChild(confetti);
+    
+    setTimeout(() => confetti.remove(), 3000);
+  }
+}
+
+function createFloatingText(event, text) {
+  const floatingText = document.createElement('div');
+  floatingText.className = 'floating-text';
+  floatingText.textContent = text;
+  floatingText.style.left = event.clientX + 'px';
+  floatingText.style.top = event.clientY + 'px';
+  document.body.appendChild(floatingText);
+  
+  setTimeout(() => floatingText.remove(), 3000);
+}
+
+// Heart interactions
+heart.addEventListener('click', (e) => {
+  createConfetti();
+  createFloatingText(e, '💕');
+});
+
+heart.addEventListener('dblclick', () => {
+  createConfetti();
+  createConfetti();
+});
+
+// Photo interactions
+photo.addEventListener('click', (e) => {
+  createConfetti();
+  createFloatingText(e, '📸');
+});
+
+// Page load celebration
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    createConfetti();
+  }, 1000);
+});
+
+// Random floating hearts on scroll
+window.addEventListener('scroll', () => {
+  if (Math.random() > 0.95) {
+    const heart = document.createElement('div');
+    heart.style.position = 'fixed';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.top = Math.random() * window.innerHeight + 'px';
+    heart.style.fontSize = '2em';
+    heart.textContent = '💕';
+    heart.style.animation = 'floatAway 4s ease-out forwards';
+    heart.style.pointerEvents = 'none';
+    document.body.appendChild(heart);
+    
+    setTimeout(() => heart.remove(), 4000);
+  }
+});
+</script>
 </body>
 </html>
