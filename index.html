@@ -1,237 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jyothi Swarup Abburi - Resume</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sister's Birthday Surprise 💕</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 11pt;
-            line-height: 1.5;
-            color: #000;
-            background: #fff;
-            padding: 0.5in;
-        }
+body {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  font-family: 'Georgia', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #333;
+  padding: 20px;
+}
 
-        .container {
-            max-width: 8.5in;
-            margin: 0 auto;
-        }
+.container {
+  max-width: 800px;
+  width: 100%;
+}
 
-        h1 {
-            font-size: 16pt;
-            font-weight: bold;
-            margin: 0 0 2pt 0;
-            padding: 0;
-            text-align: center;
-        }
+.typewriter {
+  font-size: 1.8em;
+  line-height: 1.6;
+  margin: 0 auto 40px;
+  border-right: 4px solid #ff6b9d;
+  white-space: pre-wrap;
+  overflow: hidden;
+  animation: typing 8s steps(200) forwards, blink 1s infinite;
+  padding: 0 20px;
+}
 
-        .header-contact {
-            text-align: center;
-            font-size: 10pt;
-            margin-bottom: 12pt;
-            line-height: 1.4;
-        }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 
-        h2 {
-            font-size: 12pt;
-            font-weight: bold;
-            margin: 12pt 0 6pt 0;
-            padding: 0;
-            border-bottom: 1px solid #000;
-        }
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
 
-        .entry {
-            margin-bottom: 8pt;
-        }
+.heart {
+  font-size: 6em;
+  margin: 30px 0;
+  animation: pulse 2s infinite;
+  letter-spacing: 20px;
+}
 
-        .entry-title {
-            font-weight: bold;
-            font-size: 11pt;
-            margin: 6pt 0 0 0;
-        }
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
 
-        .entry-subtitle {
-            font-weight: bold;
-            margin: 0;
-        }
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px 0;
+}
 
-        .entry-date {
-            font-style: italic;
-            margin: 0;
-        }
+.photos img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(255, 107, 157, 0.5);
+  transition: transform 0.4s ease;
+}
 
-        .entry-details {
-            margin: 0;
-            font-size: 10pt;
-        }
+.photos img:hover {
+  transform: scale(1.08);
+}
 
-        ul {
-            margin: 4pt 0 4pt 20pt;
-            padding: 0;
-            list-style-type: disc;
-        }
+.music {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+}
 
-        li {
-            margin: 2pt 0;
-            font-size: 10pt;
-            line-height: 1.4;
-        }
+@media (max-width: 768px) {
+  .typewriter {
+    font-size: 1.2em;
+    line-height: 1.4;
+  }
 
-        .skill-line {
-            margin: 4pt 0;
-            font-size: 10pt;
-        }
+  .heart {
+    font-size: 4em;
+    letter-spacing: 10px;
+  }
 
-        .skill-label {
-            font-weight: bold;
-            display: inline;
-        }
+  .photos img {
+    width: 220px;
+    height: 220px;
+  }
+}
 
-        p {
-            margin: 0 0 6pt 0;
-            font-size: 10pt;
-            line-height: 1.4;
-        }
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
 
-        @media print {
-            body {
-                margin: 0;
-                padding: 0.5in;
-                background: white;
-            }
-            .container {
-                max-width: 100%;
-            }
-        }
-    </style>
+  .typewriter {
+    font-size: 1em;
+  }
+
+  .heart {
+    font-size: 3em;
+    letter-spacing: 5px;
+  }
+
+  .photos img {
+    width: 180px;
+    height: 180px;
+  }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Jyothi Swarup Abburi</h1>
-        <div class="header-contact">
-            <p>Mansfield, CT 06250 | 636-368-5657 | swarupabburi0897@gmail.com<br>
-            Portfolio: swarupchowdary.netlify.app | LinkedIn: linkedin.com/in/swarup-abburi-b1a3a339a | GitHub: github.com/swaroopsankar</p>
-        </div>
+<div class="container">
+  <h1 class="typewriter">Many more glorious returns of the day, my dearest sister! 💕
 
-        <h2>PROFESSIONAL SUMMARY</h2>
-        <p>Data Analyst and Implementation Specialist with MS in Data Analytics from New Mexico State University (2025) and B.Tech in Electronics and Communication Engineering from Bharath University (2022). 3+ years of hands-on experience with SQL, data analysis, and customer data onboarding, working closely with cross-functional teams in fast-paced environments. Proficient in Snowflake, PostgreSQL, Python (pandas), and Excel for building datasets, troubleshooting data issues, and delivering insights that improve throughput and customer outcomes. Seeking hybrid Data Analyst/Scientist role to support Marketing, Product, and Analytics teams with data-driven insights and process improvements.</p>
+You became my unpaid therapist, my fiercest comrade, my heart's confidante—all rolled into one irreplaceable soul. 
 
-        <h2>TECHNICAL SKILLS</h2>
-        <div class="skill-line"><span class="skill-label">Analytics and Data:</span> SQL, Snowflake, PostgreSQL, ETL, ELT, Data Analysis, Data Reconciliation, Excel, Google Sheets</div>
-        <div class="skill-line"><span class="skill-label">Data Science and Python:</span> Python, pandas, basic statistics, exploratory data analysis, data preprocessing</div>
-        <div class="skill-line"><span class="skill-label">Tools and Platforms:</span> Tableau, Stripe, Shopify, APIs, Jira, Git, web data collection, integrations</div>
-        <div class="skill-line"><span class="skill-label">Operations and Agile:</span> Customer Onboarding, Implementations, Technical Customer Success, Stakeholder Collaboration, Agile Sprint Planning, Daily Standups, Requirements Gathering, Quality Assurance</div>
-        <div class="skill-line"><span class="skill-label">Core Competencies:</span> Problem-Solving, Fast-Paced Environments, Cross-Functional Collaboration, Documentation, Process Improvement</div>
+I once carried a quiet void where a sister should have been... until YOU filled it completely with laughter, secrets, and unbreakable love. 
 
-        <h2>PROFESSIONAL EXPERIENCE</h2>
-
-        <div class="entry">
-            <div class="entry-title">Freelance Data Analyst and Implementation Specialist</div>
-            <div class="entry-subtitle">Remote</div>
-            <div class="entry-date">2024 to Present</div>
-            <ul>
-                <li>Managed 5+ customer analytics and data onboarding implementations end-to-end, from requirements gathering to delivery</li>
-                <li>Collaborated with Sales and Product stakeholders to understand data needs, troubleshoot issues, and ensure successful go-lives</li>
-                <li>Led cross-functional data reconciliation projects that improved customer success metrics by 40%</li>
-                <li>Diagnosed and resolved complex data onboarding issues independently in fast-paced environments</li>
-                <li>Built and maintained documentation and implementation processes that reduced onboarding time by 40%</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="entry-title">Web Development Intern</div>
-            <div class="entry-subtitle">Chennai, India</div>
-            <div class="entry-date">June 2022 to August 2022</div>
-            <ul>
-                <li>Led technical implementations in a 3-person cross-functional team, focusing on customer-facing components</li>
-                <li>Managed onboarding, troubleshooting, and deployment of web features for clients</li>
-                <li>Worked closely with Engineering and Product teams on requirements, issue resolution, and release readiness</li>
-                <li>Participated in Agile ceremonies including sprint planning, daily standups, and retrospectives while supporting technical customer success</li>
-            </ul>
-        </div>
-
-        <h2>KEY PROJECTS</h2>
-
-        <div class="entry">
-            <div class="entry-title">Snowflake Healthcare Onboarding Implementation</div>
-            <div class="entry-details">Technologies: Snowflake, SQL, Tableau, stakeholder collaboration</div>
-            <ul>
-                <li>Led end-to-end data onboarding for dataset of 1 million plus records in Snowflake environment</li>
-                <li>Collaborated with Sales and Engineering teams to troubleshoot and reconcile customer healthcare data</li>
-                <li>Built and refined implementation processes that improved throughput by 35%</li>
-                <li>Created documentation and training materials for customer success teams, emphasizing advanced SQL troubleshooting and operations analysis</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="entry-title">Customer Data Onboarding Platform</div>
-            <div class="entry-details">Technologies: SQL, Python, Excel, cross-functional collaboration</div>
-            <ul>
-                <li>Implemented customer data onboarding workflows across multiple platforms, focusing on data quality and accuracy</li>
-                <li>Troubleshot and resolved data integration issues in fast-paced environment</li>
-                <li>Worked with Product and Sales teams to translate requirements into scalable implementation steps</li>
-                <li>Achieved 40% improvement in onboarding throughput through better documentation and optimized workflows</li>
-            </ul>
-        </div>
-
-        <div class="entry">
-            <div class="entry-title">E-commerce Implementation Project</div>
-            <div class="entry-details">Technologies: SQL, PostgreSQL, APIs, technical customer success</div>
-            <ul>
-                <li>Led e-commerce data implementation projects with cross-functional teams and multiple stakeholders</li>
-                <li>Managed data onboarding and troubleshooting to ensure smooth deployments and minimal downtime</li>
-                <li>Applied Agile practices including sprint planning and daily communication to keep implementations on track</li>
-            </ul>
-        </div>
-
-        <h2>EDUCATION</h2>
-
-        <div class="entry">
-            <div class="entry-title">Master of Science in Data Analytics</div>
-            <div class="entry-subtitle">New Mexico State University</div>
-            <div class="entry-date">May 2025</div>
-            <div class="entry-details">GPA: 3.25. Focus: Data Engineering, Operations Analysis, Stakeholder Collaboration, Cross-Functional Data Solutions, Agile Project Management</div>
-        </div>
-
-        <div class="entry">
-            <div class="entry-title">Google Data Analytics Professional Certificate</div>
-            <div class="entry-subtitle">Coursera</div>
-            <div class="entry-date">2024</div>
-            <div class="entry-details">Focus: Customer Data Analysis, Troubleshooting, Onboarding Processes</div>
-        </div>
-
-        <div class="entry">
-            <div class="entry-title">Bachelor of Technology in Electronics and Communication Engineering</div>
-            <div class="entry-subtitle">Bharath University of Higher Education and Research, Chennai</div>
-            <div class="entry-date">2022</div>
-            <div class="entry-details">Focus: Systems Implementation, Technical Troubleshooting, Operations Fundamentals</div>
-        </div>
-
-        <h2>PROFESSIONAL TRAINING</h2>
-
-        <div class="entry">
-            <div class="entry-title">Full Stack Web Development and Operations Implementation</div>
-            <div class="entry-subtitle">QSpiders, Chrompet, Chennai</div>
-            <div class="entry-date">February 2022 to June 2022</div>
-            <div class="entry-details">Customer onboarding workflows, technical implementations, stakeholder collaboration, cross-functional coordination, Agile sprint planning, daily standups, retrospectives, SQL troubleshooting, database connectivity, API integrations, requirements gathering, technical customer success, quality assurance, fast-paced development</div>
-        </div>
-
-        <h2>ACHIEVEMENTS AND PORTFOLIO</h2>
-        <ul>
-            <li>Led 5+ end-to-end customer implementations with 40% efficiency gains in onboarding processes</li>
-            <li>Completed 200+ hours of technical troubleshooting and stakeholder collaboration in implementation projects</li>
-            <li>Live portfolio with 10+ implementation and onboarding projects hosted on Netlify: swarupchowdary.netlify.app</li>
-            <li>Active GitHub repositories showcasing SQL, Python, and data onboarding and troubleshooting work: github.com/swaroopsankar</li>
-            <li>Proven autonomy, problem-solving ability, and operations mindset in fast-paced, cross-functional environments</li>
-        </ul>
-    </div>
+Can't wait to share endless stories when we meet. 
+You're truly one of a kind!</h1>
+  
+  <div class="heart">🎀 💛</div>
+  
+  <div class="photos">
+    <img src="https://drive.google.com/uc?id=1VBnv2RMNK_L_6u3xpUm4CKtYdAFJOcRK" alt="Sister Memory" loading="lazy">
+  </div>
+  
+  <div class="music">
+    <iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/3SZExbKuK8BqIyLASYxTDg?utm_source=generator" width="350" height="90" frameBorder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
+  </div>
+</div>
 </body>
 </html>
