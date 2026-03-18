@@ -2,575 +2,1002 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sister's Birthday Surprise 💕</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Hey Bhandhavya 🧡</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:#0e0416;color:#fff;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer;border:none;outline:none}
+svg{display:block}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:linear-gradient(#9d4edd,#ff8c42);border-radius:4px}
+#prog{position:fixed;top:0;left:0;height:3px;z-index:9999;width:0;background:linear-gradient(90deg,#ff8c42,#e0aaff,#9d4edd,#ffb347);transition:width .1s}
+#nav{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:9998;display:flex;flex-direction:column;gap:12px}
+.dot{width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(255,140,66,.5);cursor:pointer;transition:all .3s;background:transparent}
+.dot.on{background:#ff8c42;border-color:#ff8c42;box-shadow:0 0 12px rgba(255,140,66,.7)}
+@media(max-width:640px){#nav{display:none}}
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3rem 1.2rem;position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+[data-r]{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s ease}
+[data-r].on{opacity:1;transform:none}
+[data-r][data-d="1"]{transition-delay:.1s}[data-r][data-d="2"]{transition-delay:.22s}
+[data-r][data-d="3"]{transition-delay:.34s}[data-r][data-d="4"]{transition-delay:.46s}
+[data-r][data-d="5"]{transition-delay:.58s}
 
-body {
-  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
-  font-family: 'Georgia', serif;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #333;
-  padding: 20px;
-  overflow-x: hidden;
-  position: relative;
-}
+/* ── ANIMATIONS ── */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes float-gentle{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+@keyframes pulse-ring{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.07);opacity:1}}
+@keyframes shimmer-text{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes flicker{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes cfrise{to{transform:translateY(-115vh) rotate(720deg);opacity:0}}
+@keyframes popup-in{from{opacity:0;transform:scale(.85) translateY(28px)}to{opacity:1;transform:none}}
+@keyframes flame{0%,100%{transform:scaleX(1) scaleY(1) rotate(-2deg)}50%{transform:scaleX(.85) scaleY(1.1) rotate(3deg)}}
+@keyframes star-twinkle{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes scanline{0%{top:-4px}100%{top:calc(100% + 4px)}}
+@keyframes heart-beat{0%,100%{transform:scale(1)}30%{transform:scale(1.18)}60%{transform:scale(.95)}}
+@keyframes petal-spin{to{transform:rotate(360deg)}}
+@keyframes glow-orange{0%,100%{filter:drop-shadow(0 0 8px rgba(255,140,66,.6))}50%{filter:drop-shadow(0 0 22px rgba(255,140,66,1)) drop-shadow(0 0 40px rgba(224,170,255,.5))}}
 
-/* Animated background particles */
-.particle {
-  position: fixed;
-  pointer-events: none;
-  z-index: 1;
-}
+/* ═══ S1 LOCK ═══ */
+#s1{position:fixed;inset:0;z-index:500;background:#0e0416;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;transition:opacity 1.4s,transform 1.4s;flex-direction:column}
+#s1.bye{opacity:0;transform:scale(1.1);pointer-events:none}
+.lock-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.lock-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,140,66,.18);transform:translate(-50%,-50%);top:0;left:0;animation:pulse-ring 3.5s ease-in-out infinite}
+.lock-avatar{width:min(220px,62vw);height:min(220px,62vw);margin:0 auto 1.8rem;position:relative;animation:float-gentle 4s ease-in-out infinite}
+.lock-eyebrow{font-size:.6rem;letter-spacing:.6em;text-transform:uppercase;color:rgba(255,179,113,.7);margin-bottom:.9rem;animation:flicker 3s infinite}
+.lock-name{font-family:'Playfair Display',serif;font-size:clamp(3rem,11vw,7rem);font-weight:900;line-height:.95;background:linear-gradient(135deg,#ffb347 0%,#ff8c42 25%,#e0aaff 55%,#9d4edd 80%,#ffb347 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% 200%;animation:shimmer-text 5s linear infinite;margin-bottom:.5rem}
+.lock-sub{font-family:'Dancing Script',cursive;font-size:clamp(1.1rem,3.2vw,1.7rem);color:rgba(224,170,255,.65);margin-bottom:2.5rem}
+.unlock-btn{padding:1rem 3rem;border-radius:999px;background:linear-gradient(135deg,#9d4edd,#ff8c42);color:#fff;font-size:.85rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 0 40px rgba(255,140,66,.35),0 0 80px rgba(157,78,221,.2);transition:all .3s;animation:bob 2.2s ease-in-out infinite}
+.unlock-btn:hover{box-shadow:0 0 70px rgba(255,140,66,.6),0 0 120px rgba(157,78,221,.35);transform:scale(1.07)!important}
 
-.particle::before {
-  content: '✨';
-  animation: sparkle 2s infinite;
-}
+/* ═══ MAIN ═══ */
+#main{opacity:0;transition:opacity 1.2s}
+#main.show{opacity:1}
 
-@keyframes sparkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
+/* ═══ CARD ═══ */
+.card{background:rgba(20,5,40,.72);border:1px solid rgba(255,140,66,.25);border-radius:28px;padding:2.4rem 2rem;max-width:480px;width:100%;position:relative;overflow:hidden;backdrop-filter:blur(22px);box-shadow:0 24px 80px rgba(0,0,0,.55);text-align:center;z-index:2}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#ff8c42 30%,#e0aaff 65%,transparent);border-radius:28px 28px 0 0}
+.card h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:900;background:linear-gradient(135deg,#ffb347,#fff,#e0aaff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.6rem;line-height:1.2}
+.card p{font-size:.88rem;line-height:1.8;color:rgba(230,205,255,.72)}
+.pill{display:inline-block;padding:.3rem 1rem;border-radius:999px;background:rgba(255,140,66,.18);border:1px solid rgba(255,140,66,.38);font-size:.62rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,200,140,.9);margin-bottom:1.2rem}
+.cta{display:block;width:100%;padding:.95rem;border-radius:16px;background:linear-gradient(135deg,#7b2d8b,#9d4edd,#ff8c42);color:#fff;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;box-shadow:0 8px 30px rgba(157,78,221,.3);transition:all .3s;margin-top:1.6rem}
+.cta:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(255,140,66,.35)}
 
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  pointer-events: none;
-  z-index: 2;
-}
+/* ═══ ART FRAME ═══ */
+.art-frame{border-radius:22px;overflow:hidden;position:relative;border:1px solid rgba(255,140,66,.28);box-shadow:0 8px 40px rgba(255,140,66,.14);margin:1.2rem auto}
+.art-label{position:absolute;bottom:0;left:0;right:0;padding:.5rem .8rem;background:linear-gradient(0,rgba(10,2,22,.92),transparent);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(224,170,255,.75);text-align:center}
+.art-badge{position:absolute;top:.6rem;right:.6rem;background:rgba(255,140,66,.2);border:1px solid rgba(255,140,66,.5);border-radius:999px;padding:.15rem .6rem;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:#ffb347}
 
-@keyframes confetti-fall {
-  to {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
-}
+/* ═══ METER ═══ */
+.meter-bar{width:100%;height:14px;border-radius:999px;background:rgba(255,140,66,.15);border:1px solid rgba(255,140,66,.25);overflow:hidden;margin:1.2rem 0 .5rem}
+.meter-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#ffb347,#ff8c42,#9d4edd,#e0aaff);box-shadow:0 0 12px rgba(255,140,66,.5);transition:width .1s}
+.pct-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;background:linear-gradient(135deg,#ffb347,#ff8c42,#9d4edd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.scan-lbl{font-size:.78rem;color:rgba(224,170,255,.6);margin:.3rem 0}
 
-.confetti.pink { background: #ff6b9d; animation: confetti-fall 3s ease-in forwards; }
-.confetti.light { background: #fecfef; animation: confetti-fall 3.5s ease-in forwards; }
-.confetti.rose { background: #ff9a9e; animation: confetti-fall 2.8s ease-in forwards; }
+/* ═══ OVERLAY / POPUP ═══ */
+.overlay{position:fixed;inset:0;z-index:600;background:rgba(5,0,15,.83);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.popup{background:rgba(14,4,26,.97);border:1px solid rgba(255,140,66,.3);border-radius:28px;padding:2.2rem 1.8rem;max-width:380px;width:100%;text-align:center;box-shadow:0 50px 120px rgba(0,0,0,.7);animation:popup-in .4s cubic-bezier(.16,1,.3,1);position:relative}
+.popup h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#f0d0ff;margin:.8rem 0 .5rem}
+.popup p{font-size:.85rem;color:rgba(230,205,255,.72);line-height:1.75;margin-bottom:1.4rem}
+.popup-btn{width:100%;padding:.95rem;border-radius:14px;background:linear-gradient(135deg,#7b2d8b,#ff8c42);color:#fff;font-size:.82rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;box-shadow:0 8px 28px rgba(255,140,66,.3);transition:all .3s;cursor:pointer}
+.popup-btn:hover{transform:scale(1.03)}
 
-/* Floating hearts */
-.floating-heart {
-  position: fixed;
-  font-size: 2em;
-  pointer-events: none;
-  animation: heartFloat 4s ease-out forwards;
-}
+/* ═══ BADGES ═══ */
+.badges{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1rem 0}
+.badge{padding:.35rem .95rem;border-radius:999px;background:rgba(255,140,66,.16);border:1px solid rgba(255,140,66,.28);font-size:.7rem;font-weight:600;color:rgba(255,210,165,.9);transition:all .25s}
+.badge:hover{background:rgba(255,140,66,.3);transform:translateY(-2px)}
 
-@keyframes heartFloat {
-  0% {
-    opacity: 1;
-    transform: translateY(0) translateX(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-200px) translateX(100px) scale(0.5);
-  }
-}
+/* ═══ S4 COSMIC ═══ */
+#s4{background:radial-gradient(ellipse at 50% 0%,#160030 0%,#0e0416 65%)}
+#cosmicCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.cosmic-wrap{position:relative;z-index:2;max-width:640px;width:100%;text-align:center;padding:2rem 1.2rem}
+.cosmic-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;background:linear-gradient(135deg,#ffb347,#ff8c42,#e0aaff,#9d4edd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+.cosmic-sub{font-size:.88rem;color:rgba(224,170,255,.62);margin-bottom:1.8rem;line-height:1.65}
+.stars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+@media(max-width:480px){.stars-grid{grid-template-columns:repeat(2,1fr)}}
+.star-card{background:rgba(20,5,40,.75);border:1.5px solid rgba(255,140,66,.28);border-radius:22px;padding:1.4rem .9rem;cursor:pointer;transition:all .4s;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.star-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,140,66,.1),transparent 65%)}
+.star-card:hover{border-color:rgba(255,140,66,.7);transform:translateY(-8px) scale(1.04);box-shadow:0 20px 60px rgba(255,140,66,.2)}
+.star-card.lit{border-color:#e0aaff;background:rgba(157,78,221,.12);animation:popup-in .4s ease}
+.star-em{font-size:2.2rem;display:block;margin-bottom:.5rem;animation:float 3s ease-in-out infinite}
+.star-card:nth-child(2) .star-em{animation-delay:.4s}.star-card:nth-child(3) .star-em{animation-delay:.8s}.star-card:nth-child(4) .star-em{animation-delay:.2s}.star-card:nth-child(5) .star-em{animation-delay:.6s}.star-card:nth-child(6) .star-em{animation-delay:1s}
+.star-title{font-size:.75rem;font-weight:700;color:#ffb347;display:block}
+.star-msg{font-size:.68rem;color:rgba(224,200,255,.8);line-height:1.55;margin-top:.4rem;display:none}
+.star-card.lit .star-msg{display:block}.star-card.lit .star-title{color:#e0aaff}
+.wish-track{width:100%;height:8px;border-radius:999px;background:rgba(255,140,66,.18);border:1px solid rgba(255,140,66,.25);overflow:hidden;margin-top:1.5rem}
+.wish-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#ffb347,#9d4edd);transition:width .6s cubic-bezier(.16,1,.3,1);width:0}
+.wish-lbl{font-size:.72rem;color:rgba(224,170,255,.55);margin-top:.4rem}
+.all-done{display:none;margin-top:1.2rem;padding:1rem 1.2rem;background:linear-gradient(135deg,rgba(255,140,66,.1),rgba(157,78,221,.1));border:1px solid rgba(255,140,66,.3);border-radius:16px;font-size:.85rem;color:#ffe0c0;line-height:1.7}
 
-.container {
-  max-width: 800px;
-  width: 100%;
-  position: relative;
-  z-index: 10;
-}
+/* ═══ PHONE CARD ═══ */
+.phone{background:rgba(14,4,28,.75);border:1.5px solid rgba(255,140,66,.22);border-radius:32px;padding:2rem 1.5rem;max-width:420px;width:100%;backdrop-filter:blur(18px);z-index:2}
+.phone h1{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,#ffb347,#e0aaff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem}
+.phone>section>p{font-size:.84rem;color:rgba(224,200,255,.65);margin-bottom:1rem}
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:1.2rem}
+.r-card{background:rgba(25,8,50,.6);border:1px solid rgba(255,140,66,.2);border-radius:18px;padding:1.1rem .9rem;text-align:left;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.r-card:hover{border-color:rgba(224,170,255,.6);transform:translateY(-5px);box-shadow:0 16px 45px rgba(157,78,221,.18)}
+.r-em{font-size:1.5rem;display:block;margin-bottom:.4rem}
+.r-card strong{font-size:.82rem;font-weight:700;color:#f0d0ff;display:block;margin-bottom:.2rem}
+.r-card small{font-size:.68rem;color:rgba(224,170,255,.5);display:block;line-height:1.3}
+.fheart{display:flex;justify-content:center;gap:.7rem;font-size:1.1rem;margin-top:.8rem}
+.fheart span{animation:float 1.6s ease-in-out infinite}.fheart span:nth-child(2){animation-delay:.4s}.fheart span:nth-child(3){animation-delay:.8s}
+.rpop-overlay{position:fixed;inset:0;z-index:600;background:rgba(5,0,15,.83);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.rpop{background:rgba(14,4,26,.98);border:1px solid rgba(255,140,66,.28);border-radius:28px;padding:2rem 1.8rem;max-width:380px;width:100%;text-align:center;box-shadow:0 50px 120px rgba(0,0,0,.7);animation:popup-in .4s cubic-bezier(.16,1,.3,1);position:relative}
+.pclose{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(255,140,66,.18);border:1px solid rgba(255,140,66,.3);color:rgba(255,190,130,.8);font-size:.8rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
+.pclose:hover{background:rgba(255,140,66,.38)}
+.rpop h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:#ffb347;margin-bottom:.7rem}
+.rpop p{font-size:.84rem;color:rgba(230,205,255,.78);line-height:1.78}
 
-/* Glass morphism typewriter */
-.typewriter {
-  font-size: 1.8em;
-  line-height: 1.8;
-  margin: 0 auto 40px;
-  border-right: 4px solid #ff6b9d;
-  white-space: pre-wrap;
-  overflow: hidden;
-  animation: typing 8s steps(200) forwards, blink 1s infinite, slideInDown 0.8s ease-out;
-  padding: 40px 30px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  box-shadow: 0 8px 32px rgba(255, 107, 157, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-}
+/* ═══ POLAROIDS ═══ */
+.pol-section-card{max-width:760px;width:100%;z-index:2;text-align:center}
+.pol-section-card h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:900;background:linear-gradient(135deg,#ffb347,#fff,#e0aaff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+.pol-grid{display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:center;margin:1.5rem 0}
+.pol{background:#fdf5ee;border-radius:3px;padding:1rem 1rem 2.8rem;box-shadow:0 16px 50px rgba(0,0,0,.6);width:168px;flex-shrink:0;cursor:default;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.pol:nth-child(1){transform:rotate(-5deg)}.pol:nth-child(2){transform:rotate(4deg)}.pol:nth-child(3){transform:rotate(-2.5deg)}.pol:nth-child(4){transform:rotate(6deg)}
+.pol:hover{transform:rotate(0) scale(1.14) translateY(-12px)!important;z-index:10;box-shadow:0 40px 80px rgba(0,0,0,.65)}
+.pol-pic{width:100%;aspect-ratio:1;border-radius:2px;overflow:hidden}
+.pol figcaption{font-family:'Dancing Script',cursive;font-size:.9rem;color:#4a2a10;margin-top:.8rem;text-align:center;line-height:1.3}
+.pol-date{font-size:.58rem;color:#8a5a30;text-align:center;margin-top:.25rem;letter-spacing:.04em}
+@media(max-width:560px){.pol-grid{display:none}}
 
-.typewriter::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1), transparent 70%);
-  border-radius: 30px;
-  opacity: 0;
-  animation: shine 3s infinite;
-  pointer-events: none;
-}
-
-@keyframes shine {
-  0% { opacity: 0; transform: translateX(-100%); }
-  50% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(100%); }
-}
-
-.typewriter:hover {
-  background: rgba(255, 255, 255, 0.95);
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(255, 107, 157, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.8);
-  border: 2px solid rgba(255, 107, 157, 0.3);
-}
-
-.typewriter:active {
-  transform: translateY(-8px) scale(1);
-  box-shadow: 0 15px 35px rgba(255, 107, 157, 0.3);
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Advanced heart animations */
-.heart {
-  font-size: 6em;
-  margin: 30px 0;
-  letter-spacing: 20px;
-  cursor: pointer;
-  filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.6));
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  animation: heartEntrance 0.8s ease-out;
-  user-select: none;
-}
-
-@keyframes heartEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0) rotate(-180deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-.heart {
-  animation: complexPulse 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) infinite, float 4s ease-in-out infinite, rotateSlow 6s linear infinite;
-}
-
-@keyframes complexPulse {
-  0% { transform: scale(1) rotate(0deg); }
-  25% { transform: scale(1.2) rotate(5deg); }
-  50% { transform: scale(1.35) rotate(-5deg); }
-  75% { transform: scale(1.15) rotate(3deg); }
-  100% { transform: scale(1) rotate(0deg); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(10deg); }
-}
-
-@keyframes rotateSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.heart:hover {
-  filter: drop-shadow(0 0 40px rgba(255, 107, 157, 1)) drop-shadow(0 0 20px rgba(255, 154, 158, 0.8));
-  animation: superPulse 0.5s ease-in-out, float 4s ease-in-out infinite, rotateSlow 2s linear infinite;
-  transform: scale(1.3);
-}
-
-@keyframes superPulse {
-  0%, 100% { transform: scale(1); }
-  25% { transform: scale(1.3); }
-  50% { transform: scale(1.5); }
-  75% { transform: scale(1.3); }
-}
-
-.heart:active {
-  animation: heartExplosion 0.6s ease-out;
-}
-
-@keyframes heartExplosion {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.8); }
-  100% { transform: scale(1.2); }
-}
-
-/* 3D photo gallery */
-.photos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin: 50px 0;
-  perspective: 1200px;
-  animation: galleryEntrance 1s ease-out;
-}
-
-@keyframes galleryEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.photo-frame {
-  position: relative;
-  width: 280px;
-  height: 280px;
-  transform-style: preserve-3d;
-}
-
-.photos img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 25px;
-  box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
-  position: relative;
-  border: 3px solid rgba(255, 255, 255, 0.6);
-}
-
-.photos img:hover {
-  transform: rotateY(15deg) rotateX(-10deg) translateZ(50px) scale(1.15);
-  box-shadow: 0 40px 80px rgba(255, 107, 157, 0.6), 0 0 40px rgba(255, 154, 158, 0.4);
-  border: 3px solid rgba(255, 107, 157, 0.8);
-  filter: brightness(1.15) saturate(1.2);
-}
-
-.photos img:active {
-  animation: photoMagic 0.8s ease-out;
-}
-
-@keyframes photoMagic {
-  0% { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1); }
-  25% { transform: rotateY(90deg) rotateX(45deg) rotateZ(45deg) scale(1.1); }
-  50% { transform: rotateY(180deg) rotateX(0deg) rotateZ(-45deg) scale(1.2); }
-  75% { transform: rotateY(270deg) rotateX(-45deg) rotateZ(45deg) scale(1.15); }
-  100% { transform: rotateY(360deg) rotateX(0deg) rotateZ(0deg) scale(1.15); }
-}
-
-/* Music player enhancement */
-.music {
-  margin: 50px 0;
-  display: flex;
-  justify-content: center;
-  opacity: 0;
-  animation: slideUp 0.8s ease 2.5s forwards;
-  position: relative;
-}
-
-.music::before {
-  content: '🎵';
-  position: absolute;
-  font-size: 1.5em;
-  top: -40px;
-  animation: musicNote 1s ease-in-out infinite;
-}
-
-.music::after {
-  content: '🎵';
-  position: absolute;
-  font-size: 1.5em;
-  top: -30px;
-  right: 20px;
-  animation: musicNote 1.2s ease-in-out infinite 0.3s;
-}
-
-@keyframes musicNote {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.1); }
-}
-
-.music iframe {
-  border-radius: 15px;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 15px 40px rgba(255, 107, 157, 0.35), 0 0 30px rgba(255, 154, 158, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-.music iframe:hover {
-  box-shadow: 0 25px 60px rgba(255, 107, 157, 0.5), 0 0 50px rgba(255, 154, 158, 0.4);
-  transform: scale(1.08) translateY(-5px);
-  border: 2px solid rgba(255, 107, 157, 0.4);
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Floating text effects */
-.floating-text {
-  position: fixed;
-  font-weight: bold;
-  pointer-events: none;
-  z-index: 5;
-  animation: textFloat 3s ease-out forwards;
-  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
-}
-
-@keyframes textFloat {
-  0% {
-    opacity: 1;
-    transform: translateY(0) translateX(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-120px) translateX(80px) scale(0.3) rotate(360deg);
-  }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .typewriter {
-    font-size: 1.2em;
-    padding: 25px 20px;
-    border-radius: 20px;
-  }
-
-  .heart {
-    font-size: 4em;
-    letter-spacing: 10px;
-  }
-
-  .photo-frame {
-    width: 220px;
-    height: 220px;
-  }
-
-  .music iframe {
-    width: 100% !important;
-    max-width: 350px;
-  }
-
-  .music::before, .music::after {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 10px;
-  }
-
-  .typewriter {
-    font-size: 0.95em;
-    padding: 20px 15px;
-  }
-
-  .heart {
-    font-size: 3em;
-    letter-spacing: 5px;
-  }
-
-  .photo-frame {
-    width: 180px;
-    height: 180px;
-  }
-
-  .photos {
-    gap: 15px;
-  }
-}
+/* ═══ FINAL ═══ */
+.final-intro{text-align:center;max-width:420px;z-index:2}
+.final-intro p{font-size:.9rem;color:rgba(224,200,255,.72);line-height:1.8;margin-bottom:1.5rem}
+.open-note-btn{padding:1rem 2.8rem;border-radius:14px;background:linear-gradient(135deg,#7b2d8b,#9d4edd,#ff8c42);color:#fff;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;box-shadow:0 8px 32px rgba(157,78,221,.35);transition:all .3s;cursor:pointer}
+.open-note-btn:hover{transform:translateY(-3px);box-shadow:0 16px 50px rgba(255,140,66,.45)}
+.note-wrap{max-width:600px;width:100%;z-index:2}
+.note-card{background:rgba(14,4,26,.85);border:1px solid rgba(255,140,66,.22);border-radius:28px;padding:2.2rem 2rem;backdrop-filter:blur(20px);box-shadow:0 32px 90px rgba(0,0,0,.6);position:relative;overflow:hidden;text-align:left}
+.note-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#ff8c42 30%,#e0aaff 70%,transparent)}
+.note-chip{background:rgba(255,140,66,.2);border:1px solid rgba(255,140,66,.35);border-radius:999px;padding:.28rem .9rem;font-size:.58rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:#ffb347}
+.tw-pre{font-family:'Space Grotesk',sans-serif;font-size:.88rem;line-height:1.95;color:rgba(230,215,255,.88);white-space:pre-wrap;word-break:break-word;margin-top:1rem}
+.tw-cur{display:inline-block;width:2px;height:1.1em;background:#ff8c42;vertical-align:middle;margin-left:2px;animation:blink .7s infinite}
+.hl-line{margin-top:1.2rem;padding:.9rem 1rem;background:linear-gradient(135deg,rgba(255,140,66,.12),rgba(157,78,221,.12));border:1px solid rgba(255,140,66,.32);border-radius:14px;font-size:.92rem;font-weight:700;color:#ffe0c0;text-align:center}
+.after-card{text-align:center;margin-top:2rem}
+.after-card h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,#ffb347,#ff8c42,#9d4edd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+.after-card p{font-size:.85rem;color:rgba(224,190,255,.6)}
+.btn-row{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem}
+.fw-btn{padding:.88rem 2rem;border-radius:12px;background:linear-gradient(135deg,#7b2d8b,#ff8c42);color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;box-shadow:0 8px 28px rgba(255,140,66,.3);cursor:pointer;transition:all .3s}
+.fw-btn:hover{transform:scale(1.05);box-shadow:0 14px 45px rgba(255,140,66,.5)}
+.ghost-btn{padding:.88rem 2rem;border-radius:12px;background:transparent;color:rgba(224,185,255,.85);border:1.5px solid rgba(157,78,221,.4);font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.ghost-btn:hover{background:rgba(157,78,221,.15)}
+.cfl{position:fixed;inset:0;pointer-events:none;z-index:700;overflow:hidden}
+.cfl span{position:absolute;bottom:-24px;animation:cfrise 5s ease-in forwards;opacity:.95}
+.heart-row{display:flex;justify-content:center;gap:.5rem;font-size:1.4rem;margin:.9rem 0;animation:float 3s ease-in-out infinite}
 </style>
 </head>
 <body>
-<div class="container">
-  <h1 class="typewriter" id="typewriter">Many more glorious returns of the day, my dearest sister! 💕
-
-You became my unpaid therapist, my fiercest comrade, my heart's confidante—all rolled into one irreplaceable soul. 
-
-I once carried a quiet void where a sister should have been... until YOU filled it completely with laughter, secrets, and unbreakable love. 
-
-Can't wait to share endless stories when we meet. 
-You're truly one of a kind and the point of difference!</h1>
-  
-  <div class="heart" id="heart">🎀 💛</div>
-  
-  <div class="photos">
-    <div class="photo-frame">
-      <img src="bh.jpeg" alt="Sister Memory" loading="lazy" id="photo">
-    </div>
-  </div>
-  
-  <div class="music">
-    <iframe style="border-radius:15px;" src="https://open.spotify.com/embed/track/3SZExbKuK8BqIyLASYxTDg?utm_source=generator" width="350" height="90" frameBorder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
-  </div>
+<div id="prog"></div>
+<div id="nav">
+  <div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+  <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  <div class="dot"></div><div class="dot"></div>
 </div>
 
+<!-- ═══════ S1 LOCK ═══════ -->
+<div id="s1">
+  <div class="lock-rings">
+    <div class="lock-ring" style="width:280px;height:280px;margin-top:-140px;margin-left:-140px"></div>
+    <div class="lock-ring" style="width:420px;height:420px;margin-top:-210px;margin-left:-210px;animation-delay:.6s;border-color:rgba(255,140,66,.1)"></div>
+    <div class="lock-ring" style="width:580px;height:580px;margin-top:-290px;margin-left:-290px;animation-delay:1.2s;border-color:rgba(157,78,221,.07)"></div>
+  </div>
+  <!-- SVG: cute girl avatar -->
+  <div class="lock-avatar">
+    <svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="lock-bg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1e0040"/><stop offset="100%" stop-color="#0a0018"/></radialGradient>
+        <radialGradient id="glow-orange" cx="50%" cy="70%" r="50%"><stop offset="0%" stop-color="rgba(255,140,66,.35)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        <linearGradient id="dress-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c77dff"/><stop offset="100%" stop-color="#7b2d8b"/></linearGradient>
+        <linearGradient id="hair-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a0a5a"/><stop offset="100%" stop-color="#1a0035"/></linearGradient>
+        <linearGradient id="skin-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffe0b2"/><stop offset="100%" stop-color="#ffcc80"/></linearGradient>
+      </defs>
+      <circle cx="110" cy="110" r="108" fill="url(#lock-bg)" stroke="rgba(255,140,66,.3)" stroke-width="1.5"/>
+      <circle cx="110" cy="110" r="103" fill="none" stroke="rgba(157,78,221,.18)" stroke-width=".8"/>
+      <ellipse cx="110" cy="188" rx="65" ry="22" fill="url(#glow-orange)"/>
+      <!-- Hair (long flowing) -->
+      <ellipse cx="110" cy="96" rx="48" ry="52" fill="url(#hair-grad)"/>
+      <!-- Hair sides flowing down -->
+      <path d="M62 100 Q55 140 60 175 Q68 180 75 170 Q70 145 72 115" fill="url(#hair-grad)"/>
+      <path d="M158 100 Q165 140 160 175 Q152 180 145 170 Q150 145 148 115" fill="url(#hair-grad)"/>
+      <!-- Hair highlights -->
+      <path d="M85 65 Q95 58 110 60 Q125 58 135 65" stroke="rgba(157,78,221,.4)" stroke-width="3" fill="none"/>
+      <!-- Face -->
+      <ellipse cx="110" cy="102" rx="34" ry="38" fill="url(#skin-grad)"/>
+      <!-- Ears -->
+      <ellipse cx="76" cy="105" rx="7" ry="9" fill="#ffe0b2"/>
+      <ellipse cx="144" cy="105" rx="7" ry="9" fill="#ffe0b2"/>
+      <!-- Eyes (cute big eyes) -->
+      <ellipse cx="99" cy="100" rx="9" ry="9" fill="#2a0060"/>
+      <ellipse cx="121" cy="100" rx="9" ry="9" fill="#2a0060"/>
+      <!-- Eye colour overlay -->
+      <ellipse cx="99" cy="100" rx="6" ry="6" fill="#9d4edd" opacity=".7"/>
+      <ellipse cx="121" cy="100" rx="6" ry="6" fill="#9d4edd" opacity=".7"/>
+      <!-- Eye shine -->
+      <circle cx="102" cy="97" r="2.5" fill="white" opacity=".9"/>
+      <circle cx="124" cy="97" r="2.5" fill="white" opacity=".9"/>
+      <!-- Lashes -->
+      <path d="M90 93 Q93 88 96 91" stroke="#2a0060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M112 91 Q118 88 123 91" stroke="#2a0060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Blush -->
+      <ellipse cx="88" cy="114" rx="10" ry="6" fill="rgba(255,140,66,.35)"/>
+      <ellipse cx="132" cy="114" rx="10" ry="6" fill="rgba(255,140,66,.35)"/>
+      <!-- Nose -->
+      <circle cx="110" cy="112" r="2.5" fill="rgba(200,120,60,.3)"/>
+      <!-- Smile (happy) -->
+      <path d="M100 122 Q110 132 120 122" stroke="#c27a50" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Dress / top -->
+      <path d="M65 200 Q68 168 82 162 Q95 155 110 154 Q125 155 138 162 Q152 168 155 200 Z" fill="url(#dress-grad)"/>
+      <!-- Dress collar detail -->
+      <path d="M90 158 L100 148 L110 154 L120 148 L130 158" stroke="#e0aaff" stroke-width="2" fill="none" opacity=".7"/>
+      <!-- Hair bow / accessory -->
+      <ellipse cx="148" cy="72" rx="12" ry="8" fill="#ff8c42" transform="rotate(20,148,72)" opacity=".9"/>
+      <ellipse cx="160" cy="68" rx="12" ry="8" fill="#ff8c42" transform="rotate(-20,160,68)" opacity=".9"/>
+      <circle cx="154" cy="71" r="6" fill="#ffb347"/>
+      <!-- Floating hearts around -->
+      <text x="38" y="78" font-size="16" fill="#ff8c42" opacity=".8" style="animation:float 2s infinite">🧡</text>
+      <text x="168" y="68" font-size="14" fill="#e0aaff" opacity=".8" style="animation:float 2.5s .5s infinite">💜</text>
+      <text x="42" y="155" font-size="12" fill="#ffb347" opacity=".7" style="animation:float 3s .3s infinite">✨</text>
+      <text x="170" y="145" font-size="12" fill="#9d4edd" opacity=".7" style="animation:float 2.2s .8s infinite">🌸</text>
+    </svg>
+  </div>
+  <p class="lock-eyebrow">This is for you — just you</p>
+  <h1 class="lock-name">Bhandhavya</h1>
+  <p class="lock-sub" style="font-size:clamp(1rem,3vw,1.6rem)">My orange, my sister, my person 🧡</p>
+  <button class="unlock-btn" id="openBtn">Open Your Surprise 🌸</button>
+</div>
+
+<!-- ═══════ MAIN ═══════ -->
+<div id="main">
+
+<!-- ══ S2 CUTENESS METER ══ -->
+<section id="s2">
+  <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(255,140,66,.2),transparent 70%);top:-80px;left:-100px"></div>
+  <div class="orb" style="width:300px;height:300px;background:radial-gradient(circle,rgba(157,78,221,.18),transparent 70%);bottom:-60px;right:-80px"></div>
+  <div class="card" data-r>
+    <!-- SVG: cuteness scanner - girl version -->
+    <div class="art-frame" style="width:180px;height:180px;border-radius:50%;margin:0 auto 1.4rem" data-r data-d="1">
+      <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="scan-bg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#18003a"/><stop offset="100%" stop-color="#08001a"/></radialGradient>
+          <linearGradient id="orange-bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ffb347"/><stop offset="50%" stop-color="#ff8c42"/><stop offset="100%" stop-color="#9d4edd"/></linearGradient>
+        </defs>
+        <circle cx="90" cy="90" r="90" fill="url(#scan-bg2)"/>
+        <circle cx="90" cy="90" r="75" fill="none" stroke="rgba(255,140,66,.2)" stroke-width="1"/>
+        <circle cx="90" cy="90" r="55" fill="none" stroke="rgba(157,78,221,.15)" stroke-width="1"/>
+        <circle cx="90" cy="90" r="35" fill="none" stroke="rgba(255,140,66,.25)" stroke-width="1"/>
+        <line x1="90" y1="10" x2="90" y2="170" stroke="rgba(255,140,66,.15)" stroke-width=".8"/>
+        <line x1="10" y1="90" x2="170" y2="90" stroke="rgba(255,140,66,.15)" stroke-width=".8"/>
+        <!-- Heart shape in centre instead of lightning -->
+        <path d="M90 115 C90 115 58 94 58 72 C58 58 70 52 80 60 C84 64 87 68 90 73 C93 68 96 64 100 60 C110 52 122 58 122 72 C122 94 90 115 90 115Z" fill="url(#orange-bar)" opacity=".9" style="animation:heart-beat 1.5s ease-in-out infinite"/>
+        <!-- Scanline -->
+        <rect x="0" y="0" width="180" height="4" fill="url(#orange-bar)" opacity=".4" rx="2" style="animation:scanline 2s linear infinite"/>
+        <!-- Corner brackets -->
+        <path d="M15 15 L15 35 M15 15 L35 15" stroke="#ff8c42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M165 15 L165 35 M165 15 L145 15" stroke="#ff8c42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M15 165 L15 145 M15 165 L35 165" stroke="#ff8c42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M165 165 L165 145 M165 165 L145 165" stroke="#ff8c42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="90" y="154" text-anchor="middle" fill="#ff8c42" font-size="9" font-family="monospace" letter-spacing="2">SCANNING</text>
+      </svg>
+      <span class="art-badge">SVG</span>
+    </div>
+    <h1 data-r data-d="1">Cuteness Meter 🌸</h1>
+    <p data-r data-d="2">Hold on — we need to officially measure just how adorable you are first.</p>
+    <div data-r data-d="2">
+      <div class="meter-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="mBar">
+        <div class="meter-fill" id="mFill" style="width:0%"></div>
+      </div>
+    </div>
+    <p class="scan-lbl" id="scanTxt" data-r data-d="3">Scanning cuteness levels… 🌷</p>
+    <p class="pct-num" id="pctEl" data-r data-d="3">0%</p>
+  </div>
+
+  <div class="overlay" id="mPop" style="display:none">
+    <div class="popup">
+      <!-- SVG: flower burst popup -->
+      <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto .8rem;display:block;border-radius:14px">
+        <rect width="200" height="120" fill="#0e0420" rx="14"/>
+        <!-- Petals -->
+        <g transform="translate(70,55)">
+          <ellipse cx="0" cy="-22" rx="10" ry="18" fill="#ff8c42" opacity=".9" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-22" rx="10" ry="18" fill="#9d4edd" opacity=".85" transform="rotate(60,0,0)"/>
+          <ellipse cx="0" cy="-22" rx="10" ry="18" fill="#ffb347" opacity=".9" transform="rotate(120,0,0)"/>
+          <ellipse cx="0" cy="-22" rx="10" ry="18" fill="#e0aaff" opacity=".85" transform="rotate(180,0,0)"/>
+          <ellipse cx="0" cy="-22" rx="10" ry="18" fill="#ff8c42" opacity=".9" transform="rotate(240,0,0)"/>
+          <ellipse cx="0" cy="-22" rx="10" ry="18" fill="#9d4edd" opacity=".85" transform="rotate(300,0,0)"/>
+          <circle cx="0" cy="0" r="12" fill="#ffb347"/>
+        </g>
+        <!-- Stars -->
+        <g transform="translate(145,45)">
+          <line x1="0" y1="-20" x2="0" y2="-10" stroke="#ff8c42" stroke-width="2" stroke-linecap="round"/>
+          <line x1="14" y1="-14" x2="7" y2="-7" stroke="#e0aaff" stroke-width="2" stroke-linecap="round"/>
+          <line x1="20" y1="0" x2="10" y2="0" stroke="#9d4edd" stroke-width="2" stroke-linecap="round"/>
+          <line x1="14" y1="14" x2="7" y2="7" stroke="#ffb347" stroke-width="2" stroke-linecap="round"/>
+          <line x1="0" y1="20" x2="0" y2="10" stroke="#ff8c42" stroke-width="2" stroke-linecap="round"/>
+          <line x1="-14" y1="14" x2="-7" y2="7" stroke="#e0aaff" stroke-width="2" stroke-linecap="round"/>
+          <line x1="-20" y1="0" x2="-10" y2="0" stroke="#9d4edd" stroke-width="2" stroke-linecap="round"/>
+          <line x1="-14" y1="-14" x2="-7" y2="-7" stroke="#ffb347" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <text x="100" y="112" text-anchor="middle" fill="rgba(255,179,100,.6)" font-size="8" font-family="monospace" letter-spacing="3">100% TOO CUTE</text>
+      </svg>
+      <h2>Off the Charts Cute! 🧡</h2>
+      <p>Bhandhavya just broke the cuteness meter.<br>Congratulations to you — and condolences to everyone who has to act normal around you.</p>
+      <button class="popup-btn" onclick="goSec('s3')">I Knew It. Let's Continue 🌸</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S3 CHEER UP ══ -->
+<section id="s3">
+  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(255,140,66,.15),transparent 70%);top:-100px;right:-120px"></div>
+  <div class="card" style="max-width:560px" data-r>
+    <!-- SVG: warm sunshine cheer up art -->
+    <div class="art-frame" style="height:210px" data-r data-d="1">
+      <svg width="520" height="210" viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="cheer-bg" cx="50%" cy="90%" r="80%"><stop offset="0%" stop-color="#1e0a00"/><stop offset="100%" stop-color="#0e0416"/></radialGradient>
+          <radialGradient id="sun-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,179,71,.5)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        </defs>
+        <rect width="520" height="210" fill="url(#cheer-bg)"/>
+        <!-- Soft starfield -->
+        <circle cx="30" cy="25" r="1.5" fill="white" opacity=".5"/><circle cx="100" cy="15" r="1" fill="white" opacity=".6"/><circle cx="220" cy="20" r="1.5" fill="white" opacity=".5"/><circle cx="370" cy="12" r="1" fill="white" opacity=".6"/><circle cx="490" cy="28" r="1.5" fill="white" opacity=".5"/><circle cx="160" cy="40" r="1" fill="white" opacity=".4"/><circle cx="430" cy="45" r="1.5" fill="white" opacity=".5"/>
+        <!-- Big sun -->
+        <circle cx="260" cy="105" r="55" fill="url(#sun-glow)"/>
+        <circle cx="260" cy="105" r="38" fill="#ffb347" opacity=".95"/>
+        <circle cx="260" cy="105" r="28" fill="#ffd060"/>
+        <!-- Sun rays -->
+        <line x1="260" y1="50" x2="260" y2="38" stroke="#ffb347" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+        <line x1="260" y1="160" x2="260" y2="172" stroke="#ffb347" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+        <line x1="205" y1="105" x2="193" y2="105" stroke="#ffb347" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+        <line x1="315" y1="105" x2="327" y2="105" stroke="#ffb347" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+        <line x1="221" y1="66" x2="213" y2="58" stroke="#ffb347" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
+        <line x1="299" y1="66" x2="307" y2="58" stroke="#ffb347" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
+        <line x1="221" y1="144" x2="213" y2="152" stroke="#ffb347" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
+        <line x1="299" y1="144" x2="307" y2="152" stroke="#ffb347" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
+        <!-- Smiley on sun -->
+        <circle cx="250" cy="100" r="5" fill="#e65c00"/>
+        <circle cx="270" cy="100" r="5" fill="#e65c00"/>
+        <path d="M248 115 Q260 124 272 115" stroke="#e65c00" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Text -->
+        <text x="260" y="193" text-anchor="middle" font-family="'Playfair Display',serif" font-size="24" font-weight="900" fill="rgba(255,179,100,.9)">Hey, Sunshine. You OK?</text>
+      </svg>
+      <span class="art-badge">SVG</span>
+      <div class="art-label">This page is entirely your fault for being too lovable 🧡</div>
+    </div>
+    <span class="pill" data-r data-d="1">A LITTLE SOMETHING FOR YOU</span>
+    <h1 data-r data-d="2">No Sad Faces Allowed<br>Here, Queen. 👑</h1>
+    <p style="color:rgba(255,190,130,.55);font-size:.82rem;margin:.6rem 0;animation:flicker 2.5s infinite" data-r data-d="2">(Scientifically impossible to be sad after scrolling this page.)</p>
+    <div class="badges" data-r data-d="3">
+      <span class="badge">🧡 Swarup's Orange</span>
+      <span class="badge">✨ Glowing as always</span>
+      <span class="badge">🌸 Too cute to be sad</span>
+      <span class="badge">💜 Loved beyond words</span>
+      <span class="badge">🔥 Absolutely iconic</span>
+      <span class="badge">💌 Sandeep will call, relax</span>
+      <span class="badge">💍 Sneha misses her pellam</span>
+      <span class="badge">🪢 Rakhi sister energy</span>
+    </div>
+    <p style="font-size:.85rem;color:rgba(224,200,255,.6);margin:.9rem 0;line-height:1.8" data-r data-d="4">Yes, Sandeep is busy. Yes, he hasn't talked much lately.<br>But he's a good guy — and he <em>will</em> come around. Promise. 🧡</p>
+    <button class="cta" data-r data-d="5" onclick="goSec('s4')">Continue 🌸</button>
+  </div>
+</section>
+
+<!-- ══ S4 WISH JAR ══ -->
+<section id="s4" style="flex-direction:column">
+  <canvas id="cosmicCanvas"></canvas>
+  <div class="cosmic-wrap" data-r>
+    <!-- SVG: lavender galaxy header -->
+    <div class="art-frame" style="height:150px;margin-bottom:1.6rem" data-r data-d="1">
+      <svg width="680" height="150" viewBox="0 0 680 150" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="lavender-bg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#1e0045"/><stop offset="100%" stop-color="#0a000f"/></radialGradient>
+          <radialGradient id="neb-orange" cx="30%" cy="50%" r="40%"><stop offset="0%" stop-color="rgba(255,140,66,.3)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          <radialGradient id="neb-lavender" cx="72%" cy="40%" r="40%"><stop offset="0%" stop-color="rgba(157,78,221,.28)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        </defs>
+        <rect width="680" height="150" fill="url(#lavender-bg)"/>
+        <ellipse cx="200" cy="75" rx="190" ry="80" fill="url(#neb-orange)"/>
+        <ellipse cx="490" cy="60" rx="200" ry="80" fill="url(#neb-lavender)"/>
+        <!-- Stars -->
+        <circle cx="50" cy="20" r="1.5" fill="white" opacity=".8"/><circle cx="130" cy="45" r="1" fill="white" opacity=".6"/><circle cx="200" cy="15" r="2" fill="white" opacity=".7"/><circle cx="340" cy="30" r="1.5" fill="white" opacity=".9"/><circle cx="430" cy="10" r="1" fill="white" opacity=".6"/><circle cx="555" cy="40" r="2" fill="white" opacity=".8"/><circle cx="625" cy="20" r="1.5" fill="white" opacity=".7"/>
+        <!-- Planet with rings - lavender/orange -->
+        <ellipse cx="340" cy="75" rx="38" ry="38" fill="#1e0040" stroke="rgba(255,140,66,.45)" stroke-width="1.5"/>
+        <ellipse cx="340" cy="75" rx="28" ry="28" fill="#2a0055"/>
+        <ellipse cx="340" cy="75" rx="18" ry="18" fill="#350070"/>
+        <circle cx="326" cy="62" r="7" fill="rgba(255,179,100,.18)"/>
+        <ellipse cx="340" cy="75" rx="60" ry="12" fill="none" stroke="rgba(255,140,66,.5)" stroke-width="2.5" transform="rotate(-20,340,75)"/>
+        <ellipse cx="340" cy="75" rx="68" ry="10" fill="none" stroke="rgba(157,78,221,.3)" stroke-width="1.5" transform="rotate(-20,340,75)"/>
+        <!-- Shooting star -->
+        <line x1="460" y1="28" x2="535" y2="72" stroke="#ffb347" stroke-width="1.5" opacity=".65"/>
+        <circle cx="460" cy="28" r="3" fill="#ffb347" opacity=".85"/>
+        <text x="340" y="135" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(255,140,66,.7)" letter-spacing="4">THE WISH JAR — JUST FOR YOU ✦</text>
+      </svg>
+      <span class="art-badge">SVG</span>
+    </div>
+    <h2 class="cosmic-h" data-r data-d="1">🧡 Your Personal Wish Jar 🧡</h2>
+    <p class="cosmic-sub" data-r data-d="2">6 little wishes, locked just for you.<br>Tap each one to open it, Bhandhavya.</p>
+    <div class="stars-grid" data-r data-d="3">
+      <div class="star-card" onclick="revealWish(this,0)"><span class="star-em">🌸</span><span class="star-title">Tap to Open</span><p class="star-msg">Sandeep is busy right now — not gone. There's a difference. Give it time. The good ones always come back. And he's one of the good ones.</p></div>
+      <div class="star-card" onclick="revealWish(this,1)"><span class="star-em">🧡</span><span class="star-title">Tap to Open</span><p class="star-msg">Your laugh is genuinely contagious. I hope today something makes you laugh so hard you forget what you were even upset about.</p></div>
+      <div class="star-card" onclick="revealWish(this,2)"><span class="star-em">💜</span><span class="star-title">Tap to Open</span><p class="star-msg">You have handled things quietly and gracefully that would break most people. I see it. You are so much stronger than you give yourself credit for.</p></div>
+      <div class="star-card" onclick="revealWish(this,3)"><span class="star-em">🪢</span><span class="star-title">Tap to Open</span><p class="star-msg">You tied rakhi on me. That means when you're sad, it's literally my job to fix it. This website is me doing my job. You're welcome. Also I expect good food next Rakhi.</p></div>
+      <div class="star-card" onclick="revealWish(this,4)"><span class="star-em">🌷</span><span class="star-title">Tap to Open</span><p class="star-msg">Whatever chapter you're in right now — it's not the full story. The best parts are still being written. I genuinely believe that for you.</p></div>
+      <div class="star-card" onclick="revealWish(this,5)"><span class="star-em">💍</span><span class="star-title">Tap to Open</span><p class="star-msg">Also — Sneha called. She wants her pellam back. Your wife is waiting. 😂 (On a real note — we see you. You are loved from every direction.)</p></div>
+    </div>
+    <div class="wish-track"><div class="wish-fill" id="wFill"></div></div>
+    <p class="wish-lbl" id="wLbl">0 / 6 wishes opened</p>
+    <div class="all-done" id="allDone">🧡 All 6 wishes are yours now, Bhandhavya.<br>Every single one was written because you matter — more than you know. 💜</div>
+    <button class="cta" onclick="goSec('s5')" style="max-width:300px;margin:1.5rem auto 0" data-r data-d="5">Continue 💜</button>
+  </div>
+</section>
+
+<!-- ══ S5 YOU ARE MY SISTER ══ -->
+<section id="s5">
+  <div class="orb" style="width:380px;height:380px;background:radial-gradient(circle,rgba(255,140,66,.12),transparent 70%);top:-80px;left:-80px"></div>
+  <div class="overlay" id="bdPop" style="display:none">
+    <div class="popup">
+      <!-- SVG: sister surprise popup -->
+      <svg width="200" height="130" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto .8rem;display:block;border-radius:14px">
+        <defs><linearGradient id="sister-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e0035"/><stop offset="100%" stop-color="#0e0025"/></linearGradient></defs>
+        <rect width="200" height="130" fill="url(#sister-bg)" rx="14"/>
+        <!-- Two girls holding hands / sister art -->
+        <!-- Girl 1 (Swarup's avatar - simplified) -->
+        <circle cx="70" cy="45" r="20" fill="none" stroke="#ff8c42" stroke-width="1.5"/>
+        <circle cx="70" cy="42" r="12" fill="#1e0035"/>
+        <path d="M46 85 Q55 72 70 70 Q85 72 94 85" stroke="#ff8c42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="64" cy="38" r="3" fill="#ff8c42" opacity=".8"/>
+        <circle cx="76" cy="38" r="3" fill="#ff8c42" opacity=".8"/>
+        <path d="M63 50 Q70 57 77 50" stroke="#ff8c42" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Girl 2 (Bhandhavya) -->
+        <circle cx="130" cy="45" r="20" fill="none" stroke="#9d4edd" stroke-width="1.5"/>
+        <circle cx="130" cy="42" r="12" fill="#1e0035"/>
+        <path d="M106 85 Q115 72 130 70 Q145 72 154 85" stroke="#9d4edd" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="124" cy="38" r="3" fill="#e0aaff" opacity=".8"/>
+        <circle cx="136" cy="38" r="3" fill="#e0aaff" opacity=".8"/>
+        <path d="M123 50 Q130 57 137 50" stroke="#9d4edd" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Holding hands bridge -->
+        <path d="M94 78 Q100 75 106 78" stroke="#ffb347" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Heart between them -->
+        <path d="M100 60 C100 60 93 53 91 48 C89 43 92 40 95 43 C97 45 99 48 100 50 C101 48 103 45 105 43 C108 40 111 43 109 48 C107 53 100 60 100 60Z" fill="#ff8c42" opacity=".9"/>
+        <text x="100" y="118" text-anchor="middle" fill="rgba(224,170,255,.6)" font-size="9" font-family="monospace" letter-spacing="2">SISTERS BY CHOICE</text>
+      </svg>
+      <h2>A Whole Surprise — For You 🧡</h2>
+      <p>You tied rakhi on me. You gave me the title. So when you're sad — it's on me to show up. Here I am. Also Sneha sent me. 💀</p>
+      <button class="popup-btn" onclick="openSister()">I'm Smiling Now 😊</button>
+    </div>
+  </div>
+  <div class="card" id="sisterCard" style="opacity:0;transform:translateY(24px);transition:all .9s cubic-bezier(.16,1,.3,1)">
+    <!-- SVG: orange blossom art -->
+    <div class="art-frame" style="height:220px" data-r data-d="1">
+      <svg width="460" height="220" viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="orange-glow" cx="50%" cy="60%" r="60%"><stop offset="0%" stop-color="#2a0040"/><stop offset="100%" stop-color="#0e0416"/></radialGradient>
+          <radialGradient id="orange-sphere" cx="40%" cy="35%" r="55%"><stop offset="0%" stop-color="#ffcc80"/><stop offset="60%" stop-color="#ff8c42"/><stop offset="100%" stop-color="#e65c00"/></radialGradient>
+        </defs>
+        <rect width="460" height="220" fill="url(#orange-glow)"/>
+        <!-- Big decorative orange fruit in center -->
+        <circle cx="230" cy="110" r="60" fill="url(#orange-sphere)" style="animation:glow-orange 3s ease-in-out infinite"/>
+        <!-- Orange texture lines -->
+        <path d="M200 60 Q230 55 260 60 Q230 65 200 60" fill="rgba(230,92,0,.25)"/>
+        <ellipse cx="210" cy="95" rx="18" ry="10" fill="rgba(230,92,0,.1)" transform="rotate(-30,210,95)"/>
+        <!-- Leaf stem on top -->
+        <path d="M230 50 Q232 38 228 30" stroke="#4a7a00" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M228 38 Q220 30 218 22 Q224 24 230 32" fill="#5a9000" opacity=".85"/>
+        <path d="M232 36 Q240 28 244 20 Q238 22 230 32" fill="#5a9000" opacity=".85"/>
+        <!-- Orange shine -->
+        <circle cx="210" cy="90" r="15" fill="rgba(255,220,160,.25)"/>
+        <!-- Floating orange slices (small decorative) -->
+        <circle cx="80" cy="80" r="20" fill="rgba(255,140,66,.5)" stroke="rgba(255,179,100,.4)" stroke-width="1.5"/>
+        <line x1="80" y1="60" x2="80" y2="100" stroke="rgba(230,92,0,.4)" stroke-width="1.2"/>
+        <line x1="60" y1="80" x2="100" y2="80" stroke="rgba(230,92,0,.4)" stroke-width="1.2"/>
+        <line x1="66" y1="66" x2="94" y2="94" stroke="rgba(230,92,0,.3)" stroke-width="1"/>
+        <line x1="94" y1="66" x2="66" y2="94" stroke="rgba(230,92,0,.3)" stroke-width="1"/>
+        <circle cx="378" cy="145" r="16" fill="rgba(255,140,66,.45)" stroke="rgba(255,179,100,.35)" stroke-width="1.5"/>
+        <line x1="378" y1="129" x2="378" y2="161" stroke="rgba(230,92,0,.4)" stroke-width="1.2"/>
+        <line x1="362" y1="145" x2="394" y2="145" stroke="rgba(230,92,0,.4)" stroke-width="1.2"/>
+        <!-- Blossoms (lavender/purple) -->
+        <g transform="translate(350,60)">
+          <ellipse cx="0" cy="-16" rx="7" ry="12" fill="#9d4edd" opacity=".8"/>
+          <ellipse cx="0" cy="-16" rx="7" ry="12" fill="#e0aaff" opacity=".7" transform="rotate(72,0,0)"/>
+          <ellipse cx="0" cy="-16" rx="7" ry="12" fill="#9d4edd" opacity=".75" transform="rotate(144,0,0)"/>
+          <ellipse cx="0" cy="-16" rx="7" ry="12" fill="#e0aaff" opacity=".7" transform="rotate(216,0,0)"/>
+          <ellipse cx="0" cy="-16" rx="7" ry="12" fill="#9d4edd" opacity=".75" transform="rotate(288,0,0)"/>
+          <circle cx="0" cy="0" r="6" fill="#ffb347"/>
+        </g>
+        <g transform="translate(110,155)">
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c77dff" opacity=".8"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#9d4edd" opacity=".7" transform="rotate(72,0,0)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c77dff" opacity=".75" transform="rotate(144,0,0)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#9d4edd" opacity=".7" transform="rotate(216,0,0)"/>
+          <ellipse cx="0" cy="-14" rx="6" ry="10" fill="#c77dff" opacity=".75" transform="rotate(288,0,0)"/>
+          <circle cx="0" cy="0" r="5" fill="#ffb347"/>
+        </g>
+        <!-- Text -->
+        <text x="230" y="200" text-anchor="middle" font-family="'Dancing Script',cursive" font-size="26" fill="rgba(255,179,100,.9)">My Orange 🧡</text>
+      </svg>
+      <span class="art-badge">SVG</span>
+      <div class="art-label">You are literally my orange — warm, bright, and impossible to ignore</div>
+    </div>
+    <h1>My Rakhi Sister,<br>Bhandhavya 💜</h1>
+    <p data-r data-d="2">Rakhi August 2025 made it official. Before that it was just obvious.</p>
+    <div class="heart-row" data-r data-d="3">🧡💜✨🌸💫</div>
+    <p style="font-size:.82rem;color:rgba(224,200,255,.55);font-style:italic;margin:.5rem 0" data-r data-d="3">Rakhi August 2025 — the day you officially made me your brother from another mother. 🪢</p>
+    <button class="cta" data-r data-d="4" onclick="goSec('s6')">See Why You're So Special ✦</button>
+  </div>
+</section>
+
+<!-- ══ S6 REASONS ══ -->
+<section id="s6">
+  <div class="orb" style="width:350px;height:350px;background:radial-gradient(circle,rgba(157,78,221,.2),transparent 70%);bottom:-80px;left:-80px"></div>
+  <div class="phone">
+    <section>
+      <h1>Why You Are Incredible</h1>
+      <p>No exaggeration. Just the facts about you.</p>
+    </section>
+    <!-- SVG: sisters / friends art -->
+    <div class="art-frame" style="height:130px;margin-bottom:1.1rem">
+      <svg width="420" height="130" viewBox="0 0 420 130" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="sister-art-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#12002a"/><stop offset="100%" stop-color="#1e0030"/></linearGradient></defs>
+        <rect width="420" height="130" fill="url(#sister-art-bg)"/>
+        <!-- Warm gradient overlay -->
+        <defs><radialGradient id="warm-over" cx="50%" cy="100%" r="60%"><stop offset="0%" stop-color="rgba(255,140,66,.25)"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs>
+        <rect width="420" height="130" fill="url(#warm-over)"/>
+        <!-- Two girl silhouettes sitting together -->
+        <ellipse cx="155" cy="45" rx="18" ry="18" fill="none" stroke="#ff8c42" stroke-width="2"/>
+        <path d="M130 100 Q138 80 155 78 Q172 80 180 100" fill="none" stroke="#ff8c42" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Hair detail girl 1 -->
+        <path d="M137 40 Q140 30 155 28 Q170 30 173 40" fill="rgba(30,0,60,.9)" stroke="rgba(255,140,66,.3)" stroke-width="1"/>
+        <circle cx="149" cy="41" r="3" fill="#ff8c42" opacity=".7"/>
+        <circle cx="161" cy="41" r="3" fill="#ff8c42" opacity=".7"/>
+        <path d="M148 52 Q155 58 162 52" stroke="#ff8c42" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="265" cy="45" rx="18" ry="18" fill="none" stroke="#9d4edd" stroke-width="2"/>
+        <path d="M240 100 Q248 80 265 78 Q282 80 290 100" fill="none" stroke="#9d4edd" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M247 40 Q250 30 265 28 Q280 30 283 40" fill="rgba(30,0,60,.9)" stroke="rgba(157,78,221,.3)" stroke-width="1"/>
+        <!-- Flowing hair girl 2 -->
+        <path d="M283 45 Q290 60 288 80" stroke="rgba(157,78,221,.4)" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <circle cx="259" cy="41" r="3" fill="#e0aaff" opacity=".7"/>
+        <circle cx="271" cy="41" r="3" fill="#e0aaff" opacity=".7"/>
+        <path d="M258 52 Q265 58 272 52" stroke="#9d4edd" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Bridge / connection hearts -->
+        <text x="210" y="62" text-anchor="middle" font-size="22" fill="#ff8c42" opacity=".9">🧡</text>
+        <!-- Stars/sparkles -->
+        <circle cx="60" cy="30" r="2" fill="#ffb347" opacity=".7"/><circle cx="360" cy="25" r="2" fill="#e0aaff" opacity=".7"/><circle cx="40" cy="80" r="1.5" fill="#9d4edd" opacity=".6"/><circle cx="385" cy="75" r="1.5" fill="#ff8c42" opacity=".6"/>
+        <text x="210" y="120" text-anchor="middle" fill="rgba(255,179,100,.55)" font-size="9" font-family="monospace" letter-spacing="3">SISTERS BY CHOICE ✦</text>
+      </svg>
+      <span class="art-badge">SVG</span>
+    </div>
+    <div class="r-grid">
+      <button class="r-card" onclick="openR(0)" type="button"><span class="r-em">🎧</span><strong>Always There</strong><small>The safest person in my world</small></button>
+      <button class="r-card" onclick="openR(1)" type="button"><span class="r-em">🌸</span><strong>Too Kind</strong><small>Genuinely the warmest human</small></button>
+      <button class="r-card" onclick="openR(2)" type="button"><span class="r-em">😂</span><strong>Funniest Sister</strong><small>Makes everything 10x better</small></button>
+      <button class="r-card" onclick="openR(3)" type="button"><span class="r-em">💪</span><strong>Secretly Strong</strong><small>Handles things quietly — but powerfully</small></button>
+    </div>
+    <button class="cta" onclick="goSec('s7')" type="button" style="margin-top:.2rem">Open Memory Wall 🧡</button>
+    <div class="fheart"><span>🧡</span><span>✨</span><span>💜</span></div>
+  </div>
+
+  <div class="rpop-overlay" id="rPop" style="display:none">
+    <div class="rpop">
+      <button class="pclose" onclick="closeR()">✕</button>
+      <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto .9rem;display:block;border-radius:50%;border:1px solid rgba(255,140,66,.3)">
+        <circle cx="80" cy="80" r="80" fill="#10002a"/>
+        <circle cx="80" cy="80" r="72" fill="none" stroke="rgba(255,140,66,.2)" stroke-width="1"/>
+        <!-- Girl face -->
+        <ellipse cx="80" cy="72" rx="28" ry="30" fill="#ffe0b2"/>
+        <ellipse cx="80" cy="60" rx="26" ry="22" fill="#1e003a"/>
+        <!-- Long hair -->
+        <path d="M52 72 Q46 110 50 140" stroke="#1e003a" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <path d="M108 72 Q114 110 110 140" stroke="#1e003a" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <circle cx="70" cy="68" r="7" fill="#2a0060"/><circle cx="90" cy="68" r="7" fill="#2a0060"/>
+        <circle cx="73" cy="66" r="2" fill="white"/><circle cx="93" cy="66" r="2" fill="white"/>
+        <ellipse cx="66" cy="82" rx="8" ry="5" fill="rgba(255,140,66,.3)"/>
+        <ellipse cx="94" cy="82" rx="8" ry="5" fill="rgba(255,140,66,.3)"/>
+        <path d="M71 88 Q80 95 89 88" stroke="#c27a50" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Hair bow -->
+        <ellipse cx="105" cy="55" rx="9" ry="6" fill="#ff8c42" transform="rotate(15,105,55)" opacity=".9"/>
+        <ellipse cx="115" cy="52" rx="9" ry="6" fill="#ff8c42" transform="rotate(-15,115,52)" opacity=".9"/>
+        <circle cx="110" cy="54" r="5" fill="#ffb347"/>
+      </svg>
+      <h2 id="rTitle">Reason</h2>
+      <p id="rBody">Body</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S7 POLAROIDS ══ -->
+<section id="s7">
+  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,rgba(157,78,221,.15),transparent 70%);top:-100px;right:-100px"></div>
+  <div class="pol-section-card" data-r>
+    <span class="pill" data-r>SINCE SEPTEMBER 2024</span>
+    <h1 data-r data-d="1">Our Memory Wall 🧡</h1>
+    <p style="font-size:.88rem;color:rgba(224,195,255,.6);margin-bottom:.3rem" data-r data-d="1">Short friendship. Long feelings. Zero regrets.</p>
+    <div class="pol-grid" data-r data-d="2">
+      <!-- Polaroid 1: first meet September -->
+      <figure class="pol">
+        <div class="pol-pic">
+          <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="sep-bg" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#1a0035"/><stop offset="100%" stop-color="#080012"/></radialGradient></defs>
+            <rect width="150" height="150" fill="url(#sep-bg)"/>
+            <!-- Calendar page style -->
+            <rect x="25" y="20" width="100" height="90" rx="8" fill="rgba(255,140,66,.12)" stroke="rgba(255,140,66,.3)" stroke-width="1.5"/>
+            <!-- Calendar header -->
+            <rect x="25" y="20" width="100" height="22" rx="8" fill="#ff8c42" opacity=".7"/>
+            <rect x="25" y="34" width="100" height="8" fill="#ff8c42" opacity=".7"/>
+            <text x="75" y="35" text-anchor="middle" fill="white" font-size="10" font-weight="bold" font-family="monospace">SEPTEMBER</text>
+            <!-- Day number big -->
+            <text x="75" y="85" text-anchor="middle" fill="#e0aaff" font-size="38" font-weight="900" font-family="serif">2024</text>
+            <!-- Stars -->
+            <circle cx="35" cy="125" r="3" fill="#ffb347" opacity=".8"/><circle cx="75" cy="120" r="2.5" fill="#9d4edd" opacity=".8"/><circle cx="115" cy="125" r="3" fill="#ff8c42" opacity=".8"/>
+            <text x="75" y="147" text-anchor="middle" fill="rgba(255,179,100,.6)" font-size="8" font-family="monospace">WHEN IT STARTED ✦</text>
+          </svg>
+        </div>
+        <figcaption>The month everything changed</figcaption>
+        <p class="pol-date">September 2024</p>
+      </figure>
+      <!-- Polaroid 2: late night talks -->
+      <figure class="pol">
+        <div class="pol-pic">
+          <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+            <defs><radialGradient id="night2-bg" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#0e001e"/><stop offset="100%" stop-color="#04000a"/></radialGradient></defs>
+            <rect width="150" height="150" fill="url(#night2-bg)"/>
+            <circle cx="110" cy="32" r="16" fill="#ffe0b2" opacity=".9"/>
+            <circle cx="117" cy="28" r="14" fill="#0e001e"/>
+            <circle cx="22" cy="20" r="2" fill="white" opacity=".8"/><circle cx="60" cy="15" r="1.5" fill="white" opacity=".6"/><circle cx="85" cy="22" r="2" fill="white" opacity=".7"/><circle cx="42" cy="40" r="1.5" fill="white" opacity=".5"/>
+            <!-- Chat bubbles -->
+            <rect x="15" y="55" width="75" height="30" rx="12" fill="rgba(157,78,221,.4)" stroke="rgba(157,78,221,.5)" stroke-width="1"/>
+            <path d="M20 85 L15 95 L30 85" fill="rgba(157,78,221,.4)"/>
+            <text x="52" y="72" text-anchor="middle" fill="rgba(224,170,255,.9)" font-size="9">hey you ok? 💜</text>
+            <rect x="55" y="100" width="80" height="28" rx="12" fill="rgba(255,140,66,.35)" stroke="rgba(255,140,66,.5)" stroke-width="1"/>
+            <path d="M130 128 L135 138 L120 128" fill="rgba(255,140,66,.35)"/>
+            <text x="95" y="118" text-anchor="middle" fill="rgba(255,200,140,.9)" font-size="9">always 🧡</text>
+            <text x="75" y="148" text-anchor="middle" fill="rgba(157,78,221,.5)" font-size="8" font-family="monospace">2AM CHATS ✦</text>
+          </svg>
+        </div>
+        <figcaption>2am check-ins that said everything</figcaption>
+        <p class="pol-date">Every other night</p>
+      </figure>
+      <!-- Polaroid 3: making each other laugh -->
+      <figure class="pol">
+        <div class="pol-pic">
+          <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="laugh-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#160020"/><stop offset="100%" stop-color="#0a0015"/></linearGradient></defs>
+            <rect width="150" height="150" fill="url(#laugh-bg)"/>
+            <!-- Big laughing emoji style art -->
+            <circle cx="75" cy="72" r="48" fill="#ffb347" opacity=".95"/>
+            <circle cx="75" cy="72" r="40" fill="#ffcc60"/>
+            <!-- Eyes (laughing - closed curved) -->
+            <path d="M55 62 Q63 55 71 62" stroke="#e65c00" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M79 62 Q87 55 95 62" stroke="#e65c00" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <!-- Big laugh mouth -->
+            <path d="M52 80 Q75 102 98 80" fill="#e65c00" opacity=".9"/>
+            <path d="M55 83 Q75 98 95 83" fill="white" opacity=".6"/>
+            <!-- Tears of joy -->
+            <path d="M50 60 Q44 70 48 78" stroke="#60c0ff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".8"/>
+            <path d="M100 60 Q106 70 102 78" stroke="#60c0ff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".8"/>
+            <!-- Blush -->
+            <ellipse cx="52" cy="76" rx="10" ry="7" fill="rgba(230,92,0,.3)"/>
+            <ellipse cx="98" cy="76" rx="10" ry="7" fill="rgba(230,92,0,.3)"/>
+            <!-- Floating laugh effects -->
+            <text x="22" y="45" font-size="14" fill="#ff8c42" opacity=".8">😂</text>
+            <text x="115" y="40" font-size="12" fill="#9d4edd" opacity=".7">💜</text>
+            <text x="75" y="148" text-anchor="middle" fill="rgba(255,179,100,.55)" font-size="8" font-family="monospace">US, ALWAYS 😂</text>
+          </svg>
+        </div>
+        <figcaption>Making each other wheeze-laugh</figcaption>
+        <p class="pol-date">Literally every day</p>
+      </figure>
+      <!-- Polaroid 4: always here -->
+      <figure class="pol">
+        <div class="pol-pic">
+          <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="here-bg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#1a0038"/><stop offset="100%" stop-color="#0a0020"/></radialGradient>
+              <radialGradient id="heart-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,140,66,.4)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+            </defs>
+            <rect width="150" height="150" fill="url(#here-bg)"/>
+            <!-- Stars -->
+            <circle cx="20" cy="20" r="1.5" fill="white" opacity=".8"/><circle cx="50" cy="12" r="1" fill="white" opacity=".6"/><circle cx="100" cy="18" r="2" fill="white" opacity=".7"/><circle cx="130" cy="30" r="1.5" fill="white" opacity=".6"/>
+            <!-- Heart -->
+            <circle cx="75" cy="75" r="45" fill="url(#heart-glow)"/>
+            <path d="M75 102 C75 102 38 78 38 52 C38 36 50 28 62 36 C67 40 71 46 75 52 C79 46 83 40 88 36 C100 28 112 36 112 52 C112 78 75 102 75 102Z" fill="url(#orange-bar)" opacity=".9" style="animation:heart-beat 2s ease-in-out infinite"/>
+            <!-- Text inside heart area -->
+            <text x="75" y="70" text-anchor="middle" fill="white" font-size="10" font-weight="bold" opacity=".9">ALWAYS</text>
+            <text x="75" y="83" text-anchor="middle" fill="white" font-size="10" font-weight="bold" opacity=".9">HERE</text>
+            <!-- Orbiting small hearts -->
+            <circle cx="35" cy="75" r="6" fill="#ff8c42" opacity=".6"/><circle cx="115" cy="75" r="6" fill="#9d4edd" opacity=".6"/><circle cx="75" cy="28" r="5" fill="#ffb347" opacity=".6"/>
+            <text x="75" y="147" text-anchor="middle" fill="rgba(224,170,255,.55)" font-size="8" font-family="monospace">NO MATTER WHAT 💜</text>
+          </svg>
+        </div>
+        <figcaption>Through good days and the hard ones</figcaption>
+        <p class="pol-date">Forever from now</p>
+      </figure>
+    </div>
+    <button class="cta" onclick="goSec('s8')" style="max-width:320px;margin:0 auto" data-r data-d="3">Our Story 💜</button>
+  </div>
+</section>
+
+<!-- ══ S8 OUR STORY ══ -->
+<section id="s8">
+  <div class="orb" style="width:360px;height:360px;background:radial-gradient(circle,rgba(157,78,221,.18),transparent 70%);bottom:-80px;right:-80px"></div>
+  <div class="phone">
+    <section>
+      <h1>Our Story (So Far)</h1>
+      <p>From September 2024 to Rakhi 2025 to forever being annoying together.</p>
+    </section>
+    <!-- SVG: timeline art -->
+    <div class="art-frame" style="height:130px;margin-bottom:1rem">
+      <svg width="420" height="130" viewBox="0 0 420 130" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="timeline-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0e0020"/><stop offset="100%" stop-color="#1a0030"/></linearGradient><linearGradient id="timeline-line" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ff8c42"/><stop offset="50%" stop-color="#e0aaff"/><stop offset="100%" stop-color="#9d4edd"/></linearGradient></defs>
+        <rect width="420" height="130" fill="url(#timeline-bg)"/>
+        <!-- Timeline -->
+        <line x1="30" y1="65" x2="390" y2="65" stroke="url(#timeline-line)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Timeline dots + labels -->
+        <circle cx="60" cy="65" r="8" fill="#ff8c42" stroke="#ffb347" stroke-width="2"/>
+        <text x="60" y="45" text-anchor="middle" fill="#ffb347" font-size="9" font-family="monospace">Sept</text>
+        <text x="60" y="57" text-anchor="middle" fill="#ffb347" font-size="8" font-family="monospace">2024</text>
+        <text x="60" y="88" text-anchor="middle" fill="rgba(255,179,100,.6)" font-size="8">First met</text>
+        <circle cx="150" cy="65" r="7" fill="#c77dff" stroke="#e0aaff" stroke-width="2"/>
+        <text x="150" y="88" text-anchor="middle" fill="rgba(224,170,255,.6)" font-size="8">Became sisters</text>
+        <circle cx="240" cy="65" r="7" fill="#ff8c42" stroke="#ffb347" stroke-width="2"/>
+        <text x="240" y="88" text-anchor="middle" fill="rgba(255,179,100,.6)" font-size="8">Too many calls</text>
+        <circle cx="330" cy="65" r="7" fill="#9d4edd" stroke="#c77dff" stroke-width="2"/>
+        <text x="330" y="88" text-anchor="middle" fill="rgba(200,150,255,.6)" font-size="8">Inseparable</text>
+        <!-- Growing dot (now/future) -->
+        <circle cx="390" cy="65" r="9" fill="none" stroke="rgba(255,140,66,.6)" stroke-width="2" style="animation:pulse-ring 2s infinite"/>
+        <circle cx="390" cy="65" r="5" fill="#ffb347" opacity=".9"/>
+        <text x="390" y="88" text-anchor="middle" fill="rgba(255,179,100,.7)" font-size="8">Still going…</text>
+        <text x="210" y="118" text-anchor="middle" fill="rgba(255,179,100,.45)" font-size="8" font-family="monospace" letter-spacing="2">A WHOLE STORY — STILL BEING WRITTEN</text>
+      </svg>
+      <span class="art-badge">SVG</span>
+    </div>
+    <div class="r-grid">
+      <button class="r-card" onclick="openSt(0)" type="button"><span class="r-em">🌅</span><strong>September 2024</strong><small>The best unexpected thing</small></button>
+      <button class="r-card" onclick="openSt(1)" type="button"><span class="r-em">🪢</span><strong>Rakhi August 2025</strong><small>You made it official, sis</small></button>
+      <button class="r-card" onclick="openSt(2)" type="button"><span class="r-em">💌</span><strong>About Sandeep</strong><small>He's good. He'll come back soon</small></button>
+      <button class="r-card" onclick="openSt(3)" type="button"><span class="r-em">💍</span><strong>Sneha aka Pellam</strong><small>Your wife is worried 😂</small></button>
+    </div>
+    <button class="cta" onclick="goSec('s9')" type="button" style="margin-top:.2rem">Open Grand Finale 🌸</button>
+    <div class="fheart"><span>🧡</span><span>✨</span><span>💜</span></div>
+  </div>
+
+  <div class="rpop-overlay" id="stPop" style="display:none">
+    <div class="rpop">
+      <button class="pclose" onclick="closeSt()">✕</button>
+      <!-- SVG: two girls story popup icon -->
+      <svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto .8rem;display:block;border-radius:14px">
+        <rect width="160" height="120" fill="#0a0020" rx="14"/>
+        <circle cx="52" cy="45" r="18" fill="none" stroke="#ff8c42" stroke-width="2"/>
+        <circle cx="52" cy="42" r="10" fill="#1a0035"/>
+        <path d="M30 85 Q38 72 52 70 Q66 72 74 85" stroke="#ff8c42" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="47" cy="39" r="3" fill="#ff8c42" opacity=".8"/><circle cx="57" cy="39" r="3" fill="#ff8c42" opacity=".8"/>
+        <path d="M46 50 Q52 56 58 50" stroke="#ff8c42" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="108" cy="45" r="18" fill="none" stroke="#9d4edd" stroke-width="2"/>
+        <circle cx="108" cy="42" r="10" fill="#1a0035"/>
+        <path d="M86 85 Q94 72 108 70 Q122 72 130 85" stroke="#9d4edd" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="103" cy="39" r="3" fill="#e0aaff" opacity=".8"/><circle cx="113" cy="39" r="3" fill="#e0aaff" opacity=".8"/>
+        <path d="M102 50 Q108 56 114 50" stroke="#9d4edd" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <text x="80" y="60" text-anchor="middle" font-size="16" fill="#ff8c42">🧡</text>
+        <rect x="48" y="92" width="64" height="18" rx="6" fill="rgba(255,140,66,.18)" stroke="rgba(255,140,66,.35)" stroke-width="1"/>
+        <text x="80" y="104" text-anchor="middle" fill="#ffb347" font-size="9" font-family="monospace">SEPT 2024</text>
+      </svg>
+      <h2 id="stTitle">Story</h2>
+      <p id="stBody">Body</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ S9 FINAL NOTE ══ -->
+<section id="s9" style="flex-direction:column">
+  <div class="orb" style="width:450px;height:450px;background:radial-gradient(circle,rgba(255,140,66,.14),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="cfl" id="cfl" style="display:none" aria-hidden="true"></div>
+  <div class="final-intro" id="finalIntro">
+    <!-- SVG: glowing letter envelope feminine -->
+    <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 1.4rem;display:block;border-radius:50%;border:1px solid rgba(255,140,66,.3);box-shadow:0 0 30px rgba(255,140,66,.18),0 0 60px rgba(157,78,221,.12);animation:float-gentle 3.5s ease-in-out infinite">
+      <circle cx="80" cy="80" r="80" fill="#100020"/>
+      <!-- Envelope body -->
+      <rect x="22" y="50" width="116" height="75" rx="6" fill="rgba(255,140,66,.2)" stroke="rgba(255,140,66,.5)" stroke-width="1.5"/>
+      <!-- Envelope flap -->
+      <path d="M22 50 L80 88 L138 50" fill="rgba(157,78,221,.15)" stroke="rgba(157,78,221,.5)" stroke-width="1.5"/>
+      <!-- Bottom flap diagonal lines -->
+      <path d="M22 125 L62 90" stroke="rgba(255,140,66,.3)" stroke-width="1"/>
+      <path d="M138 125 L98 90" stroke="rgba(255,140,66,.3)" stroke-width="1"/>
+      <!-- Orange heart seal -->
+      <path d="M80 78 C80 78 70 68 65 63 C60 56 62 48 68 48 C72 48 76 52 80 56 C84 52 88 48 92 48 C98 48 100 56 95 63 C90 68 80 78 80 78Z" fill="#ff8c42" opacity=".85"/>
+      <!-- Floating details -->
+      <circle cx="22" cy="42" r="3" fill="#ffb347" opacity=".8"/>
+      <circle cx="138" cy="38" r="3" fill="#e0aaff" opacity=".8"/>
+      <circle cx="18" cy="98" r="2" fill="#9d4edd" opacity=".7"/>
+      <circle cx="142" cy="92" r="2" fill="#ff8c42" opacity=".7"/>
+      <text x="28" y="48" font-size="12" fill="#ffb347" opacity=".8">✦</text>
+      <text x="126" y="44" font-size="10" fill="#e0aaff" opacity=".8">✦</text>
+      <!-- Small flowers -->
+      <g transform="translate(25,115)">
+        <ellipse cx="0" cy="-8" rx="4" ry="6" fill="#ff8c42" opacity=".7"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="6" fill="#9d4edd" opacity=".65" transform="rotate(72,0,0)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="6" fill="#ff8c42" opacity=".7" transform="rotate(144,0,0)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="6" fill="#9d4edd" opacity=".65" transform="rotate(216,0,0)"/>
+        <ellipse cx="0" cy="-8" rx="4" ry="6" fill="#ff8c42" opacity=".7" transform="rotate(288,0,0)"/>
+        <circle cx="0" cy="0" r="4" fill="#ffb347"/>
+      </g>
+    </svg>
+    <p>One last thing before you go.<br>I wrote this especially for you, Bhandhavya.</p>
+    <button class="open-note-btn" onclick="openNote()">💌 Read Your Note</button>
+  </div>
+
+  <div class="note-wrap" id="noteWrap" style="display:none">
+    <div class="note-card">
+      <span class="note-chip">A Note for Bhandhavya</span>
+      <!-- SVG: final art banner -->
+      <div class="art-frame" style="height:140px;margin:1rem 0">
+        <svg width="600" height="140" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="final-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0e0020"/><stop offset="100%" stop-color="#04000f"/></linearGradient></defs>
+          <rect width="600" height="140" fill="url(#final-bg)"/>
+          <!-- Flowers bursting -->
+          <g transform="translate(80,60)">
+            <ellipse cx="0" cy="-28" rx="12" ry="20" fill="#ff8c42" opacity=".85"/>
+            <ellipse cx="0" cy="-28" rx="12" ry="20" fill="#9d4edd" opacity=".8" transform="rotate(60,0,0)"/>
+            <ellipse cx="0" cy="-28" rx="12" ry="20" fill="#ffb347" opacity=".85" transform="rotate(120,0,0)"/>
+            <ellipse cx="0" cy="-28" rx="12" ry="20" fill="#e0aaff" opacity=".8" transform="rotate(180,0,0)"/>
+            <ellipse cx="0" cy="-28" rx="12" ry="20" fill="#ff8c42" opacity=".85" transform="rotate(240,0,0)"/>
+            <ellipse cx="0" cy="-28" rx="12" ry="20" fill="#9d4edd" opacity=".8" transform="rotate(300,0,0)"/>
+            <circle cx="0" cy="0" r="14" fill="#ffb347"/>
+            <text x="0" y="5" text-anchor="middle" font-size="10" fill="white">🌸</text>
+          </g>
+          <g transform="translate(300,50)">
+            <ellipse cx="0" cy="-35" rx="15" ry="24" fill="#e0aaff" opacity=".85"/>
+            <ellipse cx="0" cy="-35" rx="15" ry="24" fill="#ff8c42" opacity=".8" transform="rotate(60,0,0)"/>
+            <ellipse cx="0" cy="-35" rx="15" ry="24" fill="#9d4edd" opacity=".85" transform="rotate(120,0,0)"/>
+            <ellipse cx="0" cy="-35" rx="15" ry="24" fill="#ffb347" opacity=".8" transform="rotate(180,0,0)"/>
+            <ellipse cx="0" cy="-35" rx="15" ry="24" fill="#e0aaff" opacity=".85" transform="rotate(240,0,0)"/>
+            <ellipse cx="0" cy="-35" rx="15" ry="24" fill="#ff8c42" opacity=".8" transform="rotate(300,0,0)"/>
+            <circle cx="0" cy="0" r="16" fill="#ff8c42"/>
+            <text x="0" y="5" text-anchor="middle" font-size="11" fill="white">🧡</text>
+          </g>
+          <g transform="translate(520,62)">
+            <ellipse cx="0" cy="-26" rx="11" ry="18" fill="#ffb347" opacity=".85"/>
+            <ellipse cx="0" cy="-26" rx="11" ry="18" fill="#c77dff" opacity=".8" transform="rotate(60,0,0)"/>
+            <ellipse cx="0" cy="-26" rx="11" ry="18" fill="#ff8c42" opacity=".85" transform="rotate(120,0,0)"/>
+            <ellipse cx="0" cy="-26" rx="11" ry="18" fill="#9d4edd" opacity=".8" transform="rotate(180,0,0)"/>
+            <ellipse cx="0" cy="-26" rx="11" ry="18" fill="#ffb347" opacity=".85" transform="rotate(240,0,0)"/>
+            <ellipse cx="0" cy="-26" rx="11" ry="18" fill="#c77dff" opacity=".8" transform="rotate(300,0,0)"/>
+            <circle cx="0" cy="0" r="12" fill="#c77dff"/>
+            <text x="0" y="5" text-anchor="middle" font-size="10" fill="white">💜</text>
+          </g>
+          <text x="300" y="122" text-anchor="middle" font-family="'Dancing Script',cursive" font-size="22" fill="rgba(255,179,100,.85)">For Bhandhavya — my orange, always 🧡</text>
+        </svg>
+        <span class="art-badge">SVG</span>
+      </div>
+      <pre class="tw-pre" id="twPre"><span class="tw-cur" id="twCur">|</span></pre>
+      <div class="hl-line" id="hlLine" style="display:none">Sandeep will talk to you soon. Sneha is watching. And I'm right here. 🧡</div>
+    </div>
+    <div class="after-card" id="afterCard" style="display:none">
+      <h2>You're going to be okay 🌸</h2>
+      <p>Sandeep will call. Sneha is waiting. Your brother (me) built this whole thing. You're surrounded. 🧡</p>
+    </div>
+    <div class="btn-row" id="btnRow" style="display:none">
+      <button class="fw-btn" onclick="launchFW()">🌸 Shower Her With Love!</button>
+      <button class="ghost-btn" onclick="restart()">↩ Read It Again</button>
+    </div>
+  </div>
+</section>
+</div><!-- /main -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// Particle generation
-function createParticles() {
-  const particleCount = 15;
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * window.innerWidth + 'px';
-    particle.style.top = Math.random() * window.innerHeight + 'px';
-    particle.style.animation = `sparkle ${2 + Math.random() * 2}s infinite`;
-    particle.style.animationDelay = Math.random() * 2 + 's';
-    document.body.appendChild(particle);
-  }
+const $=id=>document.getElementById(id);
+const secIds=['s2','s3','s4','s5','s6','s7','s8','s9'];
+window.addEventListener('scroll',()=>{$('prog').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';},{passive:true});
+const dots=document.querySelectorAll('.dot');
+dots.forEach((d,i)=>d.addEventListener('click',()=>document.getElementById(secIds[i]).scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{const mid=scrollY+innerHeight*.4;let a=0;secIds.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.offsetTop<=mid)a=i;});dots.forEach((d,i)=>d.classList.toggle('on',i===a));},{passive:true});
+function goSec(id){document.querySelectorAll('.overlay,.rpop-overlay').forEach(o=>o.style.display='none');document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function startReveal(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
+  setTimeout(()=>document.querySelectorAll('#s2 [data-r]').forEach(el=>el.classList.add('on')),400);
 }
-
-// Advanced confetti effect
-function advancedConfetti(x, y) {
-  const colors = ['pink', 'light', 'rose'];
-  for (let i = 0; i < 50; i++) {
-    const confetti = document.createElement('div');
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    confetti.className = `confetti ${color}`;
-    confetti.style.left = x + 'px';
-    confetti.style.top = y + 'px';
-    confetti.style.width = (5 + Math.random() * 10) + 'px';
-    confetti.style.height = (5 + Math.random() * 10) + 'px';
-    confetti.style.animationDelay = Math.random() * 0.5 + 's';
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-    document.body.appendChild(confetti);
-    
-    setTimeout(() => confetti.remove(), 3500);
-  }
+$('openBtn').addEventListener('click',()=>{
+  $('s1').classList.add('bye');$('main').classList.add('show');
+  setTimeout(()=>{
+    $('s1').style.display='none';startReveal();startMeter();initCosmic();
+    const bObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){setTimeout(()=>$('bdPop').style.display='flex',600);bObs.disconnect();}},{threshold:.3});
+    bObs.observe($('s5'));
+  },1400);
+});
+function startMeter(){
+  let v=0;
+  const t=setInterval(()=>{
+    v++;$('mFill').style.width=v+'%';$('pctEl').textContent=v+'%';$('mBar').setAttribute('aria-valuenow',v);
+    if(v<=25)$('scanTxt').textContent='Detecting adorableness levels… 🌷';
+    else if(v<=55)$('scanTxt').textContent='Measuring pure sweetness… 🧡';
+    else if(v<=80)$('scanTxt').textContent='Charts going wild… 💜';
+    else $('scanTxt').textContent='CUTENESS OVERLOAD 🌸';
+    if(v>=100){clearInterval(t);setTimeout(()=>$('mPop').style.display='flex',800);}
+  },38);
 }
-
-// Floating hearts
-function createFloatingHeart(x, y) {
-  const heart = document.createElement('div');
-  heart.className = 'floating-heart';
-  heart.textContent = '💕';
-  heart.style.left = x + 'px';
-  heart.style.top = y + 'px';
-  heart.style.fontSize = (1.5 + Math.random() * 2) + 'em';
-  document.body.appendChild(heart);
-  
-  setTimeout(() => heart.remove(), 4000);
+function openSister(){$('bdPop').style.display='none';const c=$('sisterCard');c.style.opacity='1';c.style.transform='none';}
+function initCosmic(){
+  const canvas=$('cosmicCanvas');if(!window.THREE)return;
+  const scene=new THREE.Scene();const cam=new THREE.PerspectiveCamera(75,canvas.clientWidth/canvas.clientHeight,.1,1000);cam.position.z=55;
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setSize(canvas.clientWidth,canvas.clientHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const sGeo=new THREE.BufferGeometry();const sv=[];
+  for(let i=0;i<4000;i++)sv.push((Math.random()-.5)*500,(Math.random()-.5)*500,(Math.random()-.5)*500);
+  sGeo.setAttribute('position',new THREE.Float32BufferAttribute(sv,3));
+  scene.add(new THREE.Points(sGeo,new THREE.PointsMaterial({color:0xffe0b2,size:.28,transparent:true,opacity:.7})));
+  [{c:0xff8c42,n:120},{c:0x9d4edd,n:100},{c:0xffb347,n:60}].forEach(({c,n})=>{
+    const g=new THREE.BufferGeometry();const v=[];
+    for(let i=0;i<n;i++)v.push((Math.random()-.5)*160,(Math.random()-.5)*160,(Math.random()-.5)*80);
+    g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
+    scene.add(new THREE.Points(g,new THREE.PointsMaterial({color:c,size:.7,transparent:true,opacity:.5})));
+  });
+  let t=0;(function loop(){requestAnimationFrame(loop);t+=.003;scene.rotation.y=t*.08;scene.rotation.x=Math.sin(t*.15)*.04;renderer.render(scene,cam);})();
+  window.addEventListener('resize',()=>{renderer.setSize(canvas.clientWidth,canvas.clientHeight);cam.aspect=canvas.clientWidth/canvas.clientHeight;cam.updateProjectionMatrix();});
 }
-
-// Floating text
-function createFloatingText(x, y, text) {
-  const floatingText = document.createElement('div');
-  floatingText.className = 'floating-text';
-  floatingText.textContent = text;
-  floatingText.style.left = x + 'px';
-  floatingText.style.top = y + 'px';
-  floatingText.style.fontSize = (1.2 + Math.random() * 1.5) + 'em';
-  floatingText.style.color = ['#ff6b9d', '#ff9a9e', '#fecfef'][Math.floor(Math.random() * 3)];
-  document.body.appendChild(floatingText);
-  
-  setTimeout(() => floatingText.remove(), 3000);
+let wCount=0;
+const wTitles=['About Sandeep 💌','Wish of Laughter','Wish of Strength','Your Bro Did His Job 🪢','Wish of Hope','Sneha Says Hi 💍'];
+function revealWish(el,i){
+  if(el.classList.contains('lit'))return;
+  el.classList.add('lit');el.querySelector('.star-title').textContent=wTitles[i];
+  for(let k=0;k<12;k++){const s=document.createElement('span');s.textContent=['🌸','🧡','✨','💜','🌷','⭐'][k%6];s.style.cssText=`position:fixed;font-size:${12+Math.random()*14}px;left:${15+Math.random()*70}%;top:${25+Math.random()*50}%;z-index:9999;pointer-events:none;animation:cfrise ${1.2+Math.random()}s ease-out forwards`;document.body.appendChild(s);setTimeout(()=>s.remove(),2500);}
+  wCount++;$('wFill').style.width=(wCount/6*100)+'%';$('wLbl').textContent=wCount+' / 6 wishes opened';
+  if(wCount>=6)setTimeout(()=>$('allDone').style.display='block',500);
 }
+const rData=[
+  {e:'🎧',t:'Always There',s:"You listen without making me feel like a burden. That's so rare and so valuable. Every time I talk to you, I feel heard in a way not many people can manage."},
+  {e:'🌸',t:'Too Kind',s:"The way you treat people — especially when they're struggling — it's genuinely beautiful. You give so much warmth. I hope you're letting some of it land on yourself today."},
+  {e:'😂',t:'Funniest Sister',s:"I don't know how you do it, but you make every boring conversation hilarious. You're the friend who can turn the worst days into something actually bearable. That matters more than you know."},
+  {e:'💪',t:'Quietly Strong',s:"You've handled things with a grace that honestly impresses me. You don't announce it. You don't make it a thing. You just carry on. I see it. It's remarkable."}
+];
+function openR(i){const d=rData[i];$('rTitle').textContent=d.e+' '+d.t;$('rBody').textContent=d.s;$('rPop').style.display='flex';}
+function closeR(){$('rPop').style.display='none';}
+const stData=[
+  {e:'🌅',t:'September 2024',b:"That month happened and suddenly there was a new person in my life who just made sense. No big dramatic origin story. Just — there you were, and somehow the whole thing clicked immediately."},
+  {e:'🪢',t:'Rakhi August 2025',b:"You tied that rakhi and I don't think either of us said something deep about it — but you didn't have to. That thread meant: I claim you as my brother. And I'm holding onto that."},
+  {e:'💌',t:'About Sandeep',b:"Okay listen. Sandeep is busy. He's not ignoring you on purpose — he's just caught up in things. He's a genuinely good person and he will talk to you soon. Until then, stop overthinking it. You are not the problem. 🧡"},
+  {e:'💍',t:'Sneha aka Pellam 😂',b:"Sneha has filed a complaint. She says her pellam (that's you, wife) has been sad and she won't stand for it. Your wife demands you smile immediately. This is legally binding. She made me write this. 💀"}
+];
+function openSt(i){const d=stData[i];$('stTitle').textContent=d.e+' '+d.t;$('stBody').textContent=d.b;$('stPop').style.display='flex';}
+function closeSt(){$('stPop').style.display='none';}
+const noteText=`Bhandhavya,
 
-const heart = document.getElementById('heart');
-const photo = document.getElementById('photo');
-const typewriter = document.getElementById('typewriter');
+I know Sandeep has been busy lately. And I know that kind of silence from someone you care about feels louder than it should. But here's what I also know — he's a good person. He's not forgetting you. He'll come back around and when he does, everything will make sense again. Until then, don't fill the silence with the worst version of the story.
 
-// Heart advanced interactions
-heart.addEventListener('click', (e) => {
-  advancedConfetti(e.clientX, e.clientY);
-  createFloatingHeart(e.clientX, e.clientY);
-  createFloatingText(e.clientX, e.clientY, '💕✨');
-  
-  // Trigger multiple explosions
-  setTimeout(() => advancedConfetti(e.clientX + 50, e.clientY - 50), 200);
-  setTimeout(() => advancedConfetti(e.clientX - 50, e.clientY + 50), 400);
-});
+You tied rakhi on me in August 2025. That wasn't just a thread — that was you saying: this one is mine, this is my brother. I take that seriously. Which means on the days you're sad and I find out, I'm legally and spiritually required to build an entire website about it.
 
-heart.addEventListener('dblclick', (e) => {
-  for (let i = 0; i < 3; i++) {
-    setTimeout(() => advancedConfetti(Math.random() * window.innerWidth, Math.random() * window.innerHeight), i * 150);
-  }
-});
+Also — Sneha called. Your pellam is concerned. She says you are not allowed to be sad without her written permission, and she has NOT given it. Please sort this out with your wife immediately. 😂
 
-// Photo interactions
-photo.addEventListener('click', (e) => {
-  advancedConfetti(e.clientX, e.clientY);
-  createFloatingText(e.clientX, e.clientY, '📸💫');
-  
-  for (let i = 0; i < 5; i++) {
-    setTimeout(() => createFloatingHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight), i * 100);
-  }
-});
+On a real note — you handle things quietly. You feel things deeply. You show up for people even when you're running on empty. That's a lot to carry. It's okay to let it be heavy sometimes.
 
-// Typewriter hover effect
-typewriter.addEventListener('mouseenter', () => {
-  createFloatingText(Math.random() * window.innerWidth, Math.random() * window.innerHeight, '✨');
-});
+You are loved from every direction. By your brother (me), by your pellam (Sneha), and by a boyfriend who just needs a moment to catch his breath.
 
-// Page load celebration
-window.addEventListener('load', () => {
-  createParticles();
-  setTimeout(() => {
-    advancedConfetti(window.innerWidth / 2, window.innerHeight / 2);
-  }, 1500);
-  
-  // Continuous floating hearts
-  setInterval(() => {
-    if (Math.random() > 0.92) {
-      createFloatingHeart(Math.random() * window.innerWidth, -50);
-    }
-  }, 500);
-});
+It's going to be okay.`;
 
-// Random magic on scroll
-window.addEventListener('scroll', () => {
-  if (Math.random() > 0.96) {
-    createFloatingText(Math.random() * window.innerWidth, Math.random() * window.innerHeight, '💫');
-    createFloatingHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
-  }
-});
-
-// Keyboard magic
-document.addEventListener('keypress', (e) => {
-  if (e.key === ' ' || e.key === 'Enter') {
-    advancedConfetti(window.innerWidth / 2, window.innerHeight / 2);
-  }
-});
+function openNote(){
+  $('finalIntro').style.display='none';$('noteWrap').style.display='block';
+  const pre=$('twPre'),cur=$('twCur');
+  let i=0;pre.textContent='';pre.appendChild(cur);
+  const t=setInterval(()=>{i++;pre.textContent=noteText.slice(0,i);pre.appendChild(cur);if(i>=noteText.length){clearInterval(t);cur.style.display='none';$('hlLine').style.display='block';setTimeout(()=>{$('afterCard').style.display='block';$('btnRow').style.display='flex';},1500);}},26);
+}
+const fwE=['🌸','🧡','💜','✨','🌷','⭐','💕','🎀','🌺'];
+function launchFW(){
+  const l=$('cfl');l.style.display='block';l.innerHTML='';
+  for(let i=0;i<65;i++){const s=document.createElement('span');s.textContent=fwE[i%fwE.length];s.style.left=(i*7%100)+'%';s.style.animationDelay=(-(i%8)*.25)+'s';s.style.animationDuration=(3.5+Math.random()*3)+'s';s.style.fontSize=(12+Math.random()*16)+'px';l.appendChild(s);}
+  setTimeout(()=>{l.style.display='none';l.innerHTML='';},9000);
+}
+function restart(){
+  setTimeout(()=>{
+    $('s1').style.display='';$('s1').classList.remove('bye');$('main').classList.remove('show');
+    document.querySelectorAll('[data-r]').forEach(el=>el.classList.remove('on'));
+    $('finalIntro').style.display='';$('noteWrap').style.display='none';
+    $('bdPop').style.display='none';$('sisterCard').style.opacity='0';$('sisterCard').style.transform='translateY(24px)';
+    $('mFill').style.width='0%';$('pctEl').textContent='0%';$('scanTxt').textContent='Detecting adorableness levels… 🌷';$('mPop').style.display='none';
+    wCount=0;$('wFill').style.width='0%';$('wLbl').textContent='0 / 6 wishes opened';$('allDone').style.display='none';
+    document.querySelectorAll('.star-card').forEach(sc=>{sc.classList.remove('lit');sc.querySelector('.star-title').textContent='Tap to Open';});
+  },200);
+}
 </script>
 </body>
 </html>
